@@ -1,0 +1,38 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: $spacer * 5;
+    padding-bottom: $spacer * 5;
+    font-size: $font-size-sm;
+    z-index: 2;
+    position: relative;
+    flex-direction: column;
+
+    font-weight: 600;
+
+    @media (min-width: $md) {
+        flex-direction: row;
+    }
+
+    @media (max-width: $sm) {
+        flex-direction: row;
+        align-items: baseline;
+    }
+}
+
+.header-logo {
+    width: 40%;
+    object-fit: contain;
+    margin-top: -7%;
+
+    @media (min-width: $sm) {
+        width: 25%;
+        margin-top: -2%;
+    }
+
+    @media (min-width: $lg) {
+        width: 15%;
+        margin-top: -1%;
+    }
+}

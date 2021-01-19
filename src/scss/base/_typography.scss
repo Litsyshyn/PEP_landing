@@ -1,0 +1,70 @@
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: $headings-font-family;
+    font-weight: $headings-font-weight;
+    line-height: $line-height-sm;
+    letter-spacing: 0.02em;
+    color: #00316D;
+    
+    &_light {
+        color: $primary-5;
+    }
+}
+
+.h1 {
+    font-size: $h1-font-size * 0.75;
+    &_header {
+        font-size: $h1-font-size * 0.5;
+        color: #00316D;
+    }
+}
+
+.h2 {
+    font-size: $h2-font-size * 0.80;
+    text-align: center;
+}
+
+.h3 {
+    font-size: $h3-font-size * 0.85;
+}
+
+.h4 {
+    font-size: $h4-font-size * 0.90;
+}
+
+.h5 {
+    font-size: $h5-font-size * 0.95;
+}
+
+.h6 {
+    font-size: $h6-font-size;
+}
+
+@media (min-width: $md) {
+    .h1 {
+        font-size: $h1-font-size;
+        &_header {
+            font-size: $h1-font-size * 0.82;
+            color: #00316D;
+        }
+    }
+    
+    .h2 {
+        font-size: $h2-font-size;
+    }
+    
+    .h3 {
+        font-size: $h3-font-size;
+    }
+    
+    .h4 {
+        font-size: $h4-font-size;
+    }
+    
+    .h5 {
+        font-size: $h5-font-size;
+    }
+    
+    .h6 {
+        font-size: $h6-font-size;
+    }
+}

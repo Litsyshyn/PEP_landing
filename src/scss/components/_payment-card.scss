@@ -1,0 +1,36 @@
+.payment-card {
+    border: $border-width solid $border-color;
+    border-radius: $border-radius;
+    padding: $spacer * 6;
+    text-align: center;
+    background-color: $white;
+    
+    img {
+        align-items: center;
+    }
+
+    &__name {
+        margin: $spacer * 2 0;
+        line-height: $line-height-base;
+    }
+    &__title {
+        display: inline-grid;
+        font-size: smaller;
+        color:#396090;
+    }
+    &__priсe {
+        margin-top: 14%;
+        margin-bottom: 14%;
+        span {
+            vertical-align: super;
+            font-size: initial;
+        }
+        &_required span::after {
+            content: "*";
+            color: $danger;
+            font-size: medium;
+
+        }
+    }
+}
+

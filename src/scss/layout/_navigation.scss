@@ -1,0 +1,59 @@
+.navigation {
+    display: none;
+    text-align: right;
+    &__item {
+        display: block;
+
+        & + & {
+            margin-top: 5%;
+            text-align: center;
+        }
+    }
+    
+    @media screen and (min-width: $sm) {
+        display: contents;
+        flex-direction: row;
+        align-items: center;
+        padding-right: 3%;
+    
+        &_align-left {
+            align-items: flex-start;
+        }
+
+        &__item {
+            display: inline-flex;
+            flex: none;
+            color:#00316D;
+            font-size: $font-size-base;
+            font-weight: 400;
+            text-decoration: none;
+           
+            & + & {
+                margin-top: 0;
+                margin-left: $spacer * 3;
+            }
+        }
+    }
+}
+
+.nav-sign {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    align-items: baseline;
+
+    &_button {
+        border: inset;
+        border-width: thin;
+        border-radius: 2rem;
+        padding-block: 2%;
+        padding-inline: 7%;
+    }
+
+}
+
+@media screen and (max-width: 1100px) {
+    .nav-link {
+        display: none;
+    }
+}

@@ -1,0 +1,57 @@
+.data-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
+    grid-column-gap: $spacer * 3;
+    grid-row-gap: $spacer * 3;
+}
+
+.payment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    grid-column-gap: $spacer * 3;
+    grid-row-gap: $spacer * 3;
+}
+
+.landing-image-dashboard {
+    justify-content: center;
+    order: 1;
+    max-width: 90%; 
+    position: inherit;
+}
+
+.landing-image-dashboard-1 {
+    position: relative;
+    z-index: 1;
+}
+.landing-image-dashboard-2 {
+    position: absolute;
+    z-index: 2;
+    margin-top: 10%;
+}
+
+.landing-image{
+    justify-content: center;
+    position: relative;
+    display: inline-flex;
+    max-width: 100%;
+
+    @media (max-width: $md) {
+        max-width: 90%;
+    }
+
+    @media (min-width: $lg) and (max-width: $xl) {
+        max-width: 60%;
+    }
+}
+
+.landing-feedback {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #00316D;
+
+    @media (min-width: $md) {
+        display: flex;
+        flex-direction: row;
+    }
+}

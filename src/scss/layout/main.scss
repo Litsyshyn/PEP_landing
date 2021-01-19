@@ -1,0 +1,40 @@
+.container {
+    font-size: $font-size-base;
+    font-weight: $font-weight-base;
+    line-height: $line-height;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-left: $spacer * 2;
+    padding-right: $spacer * 2;
+    overflow: hidden;
+    
+    @media (min-width: $sm) {
+        padding-left: $spacer * 4;
+        padding-right: $spacer * 4;
+    }
+}
+
+.section {
+    padding: $spacer * 5;
+    position: relative;
+    z-index: 1;
+    
+    &_background {
+        background: $background-color-1;
+        h2 {
+            color:white;
+            padding-bottom: 4%;
+        }
+    }
+        
+    &_background-2 {
+        background: $gradient-color-2;
+        h2 {
+            padding-bottom: 4%;
+        }
+    }
+}
+
+@import 'footer';
+@import 'header';
+@import 'navigation';

@@ -1,0 +1,69 @@
+.btn-primary {
+    border: none;
+    border-radius: $border-radius-lg;
+    background-color: #E2580A;
+    color: white;
+    padding: 1em 2em; // $spacer * 1.2 $spacer * 3
+    font-size: 16px;
+    font-family: $font-family-base;
+    font-weight: 600;
+    outline: none;
+    margin-top: 5%;
+    
+    &_color-1 {
+        background-color: $primary-1;
+    }
+
+    &_color-2 {
+        background-color: $primary-2;
+    }
+
+    &_color-3 {
+        background-color: $primary-3;
+    }
+
+    &_color-3 {
+        background-color: $primary-3;
+    }
+
+    &_color-5 {
+        background-color: $primary-5;
+    }
+
+    &_large {
+        padding: $spacer * 1.75 $spacer * 4;
+    }
+    &_submit {
+        background-color: #1C3FAA;
+        margin-left: 53%;
+    }
+}
+
+.btn-primary:hover {
+    cursor: pointer;
+    border: none;
+    transition: 0.5s;
+    box-shadow: 0px 10px 16px 0px rgba(77,91,237,0.2);
+}
+
+.btn-primary:active {
+    border: none;
+}
+
+.btn--has-shadow {
+    box-shadow: 0px 10px 16px 0px rgba(77,91,237,0.2);
+}
+
+.menu-btn {
+    display: none;
+    text-align: right;
+}
+
+@media screen and (max-width: $sm) {
+    .menu-btn {
+        display: block;
+        ion-icon {
+            font-size: 30px;
+        }
+    } 
+}

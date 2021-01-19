@@ -1,0 +1,27 @@
+.margin-list {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    button {
+        align-self: baseline;
+        span {
+            color: white;
+        }
+    }
+    span {
+        font-size: $font-size-lg;
+        margin-top: 2%;
+        color: #00316D;
+    }
+    h4 {
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 2%;
+        span {
+            font-size: $h4-font-size;;
+        }
+        img {
+            margin-right: 2%;
+        }
+    }
+}

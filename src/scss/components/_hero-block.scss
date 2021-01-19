@@ -1,0 +1,36 @@
+.hero-block {
+    position: relative;
+    z-index: 1;
+
+    &__left {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+        font-size: $font-size-base * 1.25;
+        color: #00316D;
+        
+        span {
+            padding-top: inherit;
+        }
+    }
+
+    &_image {
+        display: flex;
+        justify-content: center;
+        order: 1;
+        max-width: 90%; 
+        padding: 1rem;
+
+        &-1 {
+            position: relative;
+            z-index: 1;
+            margin-top: -7%;
+        }
+
+        &-2 {
+            position: absolute;
+            z-index: 2;
+        }
+    }
+}

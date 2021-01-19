@@ -1,0 +1,78 @@
+// Variables
+//
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+// Color system
+$white:    #fff !default;
+$gray-100: #F8F9FA !default;
+$gray-200: #E9ECEF !default;
+$gray-300: #DEE2E6 !default;
+$gray-400: #CED4DA !default;
+$gray-500: #ADB5BD !default;
+$gray-600: #6C757D !default;
+$gray-700: #495057 !default;
+$gray-800: #343A40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+$primary-1:       #4B71E2 !default;
+$primary-2:       #0041A7 !default;
+$primary-3:       #005BB9 !default;
+$primary-4:       #0074CB !default;
+$primary-5:       #008EDD !default; 
+$primary-6:       #00316D !default; 
+$secondary:       scale-color($primary-5, $lightness: 90%) !default;
+$success:         green !default;
+$info:            cyan !default;
+$warning:         yellow !default;
+$danger:          red !default;
+$spacer:                    8px !default;
+$body-bg:                   $white !default;
+$body-color:                $gray-900 !default;
+$gradient-color:            linear-gradient(0deg, #F2F7FF 0%, rgba(238, 244, 255, 0.06) 100%);
+$gradient-color-2:          linear-gradient(0deg, #F2F7FF 21.88%, rgba(238, 244, 255, 0.3) 100%);
+$background-color-1:        linear-gradient(285.62deg, #2A4FB6 0%, #562AB6 100.33%);
+$paragraph-margin-bottom:   $spacer !default;
+$xs: 0;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1600px;
+$grid-breakpoints: (
+  xs: $xs, // Extra small screen / phone
+  sm: $sm, // Small screen / phone
+  md: $md, // Medium screen / tablet
+  lg: $lg, // Large screen / desktop
+  xl: $xl, // Extra large screen / wide desktop
+  xxl: $xxl
+) !default;
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px
+) !default;
+$line-height:                 1.5 !default;
+$line-height-sm:              1.2 !default;
+$line-height-lg:              1.5 !default;
+$border-width:                1px !default;
+$border-color:                $secondary !default;
+$border-radius-sm:            4px !default;
+$border-radius:               1rem!default;
+$border-radius-lg:            $border-radius * 3.125 !default; 
+// Typography
+$font-family-base:            "Roboto", sans-serif  !default;
+$font-size-base:              1rem !default; //`16px`
+$font-size-sm:                $font-size-base * .875 !default;
+$font-size-lg:                $font-size-base * 1.25 !default;
+$font-size-xxl:               $font-size-base * 1.5 !default;
+$font-weight-base:            normal !default;
+$line-height-base:            1.5 !default;
+$h1-font-size:                $font-size-base * 2.75 !default;
+$h2-font-size:                $font-size-base * 2 !default;
+$h3-font-size:                $font-size-base * 1.75 !default;
+$h4-font-size:                $font-size-base * 1.5 !default;
+$h5-font-size:                $font-size-base * 1.25 !default;
+$h6-font-size:                $font-size-base !default;
+$headings-font-family:        "Roboto", sans-serif !default;
+$headings-font-weight:        bold !default;

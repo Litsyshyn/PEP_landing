@@ -1,0 +1,21 @@
+.user-card {
+    border: $border-width solid $border-color;
+    border-radius: $border-radius;
+    padding: $spacer * 2;
+    text-align: center;
+    background-color: $white;
+    
+    img {
+        align-items: right;
+        margin-left: 70%;
+    }
+
+    &__name {
+        line-height: $line-height-base;
+    }
+    &__title {
+        display: inline-grid;
+        font-size: large;
+        color:#396090;
+    }
+}
