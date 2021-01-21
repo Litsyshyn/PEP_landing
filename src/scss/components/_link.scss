@@ -17,16 +17,15 @@
 }
 
 .select_lang {
-    align-items: center;
-    align-self: normal;
+    align-self: center;
     vertical-align: middle;
     cursor: pointer;
     border: none;
     background: none;
     font-family: $headings-font-family;
-    &_span {
-        font-size: small;
+    span {
         padding-left: 7%;
+        font-size: 12px !important;
     }
 }
 
