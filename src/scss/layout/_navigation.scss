@@ -15,16 +15,11 @@
         flex-direction: row;
         align-items: center;
         padding-right: 3%;
-    
-        &_align-left {
-            align-items: flex-start;
-        }
 
         &__item {
             display: inline-flex;
             flex: none;
             color:#00316D;
-            font-size: $font-size-base;
             font-weight: 400;
             text-decoration: none;
            
@@ -48,6 +43,11 @@
         border-radius: 2rem;
         padding-block: 2%;
         padding-inline: 7%;
+    }
+    
+    &_button:hover{
+        background: #074B9E;
+        color:white;
     }
 
 }
