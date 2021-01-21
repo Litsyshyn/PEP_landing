@@ -15,12 +15,13 @@
     }
     &__title {
         display: inline-grid;
-        font-size: smaller;
+        font-size: $font-size-sm;
         color:#396090;
     }
     &__priсe {
         margin-top: 14%;
         margin-bottom: 14%;
+        font-size: $font-size-xxl;
         span {
             vertical-align: super;
             font-size: initial;
@@ -30,6 +31,22 @@
             color: $danger;
             font-size: medium;
 
+        }
+    }
+
+    @media screen and (max-width: $sm) {
+        &__title {
+            font-size: calc(4.5vw);
+        }
+
+        &__priсe {
+            margin-right: -7%;
+        }
+
+        button {
+            span {
+                font-size: $font-size-base * .6;
+            }
         }
     }
 }

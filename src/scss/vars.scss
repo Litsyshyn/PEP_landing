@@ -62,17 +62,17 @@ $border-radius:               1rem!default;
 $border-radius-lg:            $border-radius * 3.125 !default; 
 // Typography
 $font-family-base:            "Roboto", sans-serif  !default;
-$font-size-base:              1rem !default; //`16px`
-$font-size-sm:                $font-size-base * .875 !default;
-$font-size-lg:                $font-size-base * 1.25 !default;
-$font-size-xxl:               $font-size-base * 1.5 !default;
+$font-size-base:              1rem !default; //`20px`
+$font-size-sm:                $font-size-base * .8 !default; //1em 16px
+$font-size-lg:                $font-size-base * 1.2 !default; //24px
+$font-size-xxl:               $font-size-base * 2.5 !default; //50px
 $font-weight-base:            normal !default;
 $line-height-base:            1.5 !default;
-$h1-font-size:                $font-size-base * 2.75 !default;
-$h2-font-size:                $font-size-base * 2 !default;
-$h3-font-size:                $font-size-base * 1.75 !default;
-$h4-font-size:                $font-size-base * 1.5 !default;
-$h5-font-size:                $font-size-base * 1.25 !default;
+$h1-font-size:                $font-size-base * 1.8 !default; //36px
+$h2-font-size:                $font-size-base * 1.6 !default; //32px
+$h3-font-size:                $font-size-base * 1.4 !default; //28px
+$h4-font-size:                $font-size-base * 1.2 !default;
+$h5-font-size:                $font-size-base * .8 !default;
 $h6-font-size:                $font-size-base !default;
 $headings-font-family:        "Roboto", sans-serif !default;
 $headings-font-weight:        bold !default;

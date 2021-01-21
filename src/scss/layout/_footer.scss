@@ -16,6 +16,7 @@
     &__item {
         & + & {
             margin-top: $spacer * 2;
+            display: grid;
         }
     }
     
@@ -59,10 +60,18 @@
         margin-left: 10%;
         text-align: center;
         padding-top: 4%;
+        font-size: $font-size-base * .7;
     }
     
     &__copyright {
         margin-top: $spacer * 3;
+        text-align: center;
         align-self: center;
+    }
+
+    @media (max-width: $sm) {
+        &__slogan {
+            font-size: $font-size-base * .6;
+        }
     }
 }

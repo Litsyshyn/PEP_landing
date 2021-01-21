@@ -25,6 +25,12 @@
             color:white;
             padding-bottom: 4%;
         }
+        @media (max-width: $sm) {
+            h2 {
+                padding-bottom: 7%;
+                font-size: $font-size-base;
+            }
+        }
     }
         
     &_background-2 {
@@ -32,6 +38,10 @@
         h2 {
             padding-bottom: 4%;
         }
+    }
+
+    @media (max-width: $sm) {
+        padding: 10% 0%;
     }
 }
 

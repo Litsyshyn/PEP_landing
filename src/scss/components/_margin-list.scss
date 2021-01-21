@@ -2,26 +2,57 @@
     align-self: center;
     display: flex;
     flex-direction: column;
+    font-size: $font-size-base;
+
     button {
         align-self: baseline;
         span {
             color: white;
         }
     }
+
     span {
-        font-size: $font-size-lg;
         margin-top: 2%;
         color: #00316D;
     }
+
     h4 {
         display: inline-flex;
         align-items: center;
         margin-bottom: 2%;
+        
         span {
             font-size: $h4-font-size;;
         }
+        
         img {
             margin-right: 2%;
         }
     }
+
+    @media (max-width: $sm) {
+        h4 {
+            span {
+                font-size: calc(5vw);
+            }
+        }
+        
+        span {
+            font-size: calc(4.4vw);
+        }
+        
+        button {
+            align-self: center;
+            span {
+                font-size: calc(4vw);
+            }
+        }
+    }
+
+    @media (max-width: $md) {
+        button {
+            align-self: center;
+        }
+    }
 }
+
