@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode=production --config webpack.prod.js",
-    "start": "webpack serve --mode=development --config webpack.dev.js"
+    "build": "./node_modules/.bin/webpack --config webpack.prod.js",
+    "watch": "NODE_ENV=development ./node_modules/.bin/webpack --config webpack.dev.js --watch",
+    "start": "NODE_ENV=development ./node_modules/.bin/webpack serve --config webpack.dev.js --hot"
   },
   "browserslist": [
     "> 1%",

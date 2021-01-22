@@ -4,23 +4,16 @@ const autoprefixer = require('autoprefixer');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const Dotenv = require('dotenv-webpack');
-const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
     context: __dirname,
     entry: './src/index.js',
-    optimization: {
-        minimize: true,
-        minimizer: [
-          new TerserPlugin({}),
-        ],
-    },
     output: {
         path: path.resolve('./dist'),
         filename: "[name].js",
         publicPath: '/dist'
     },
-
+    
     plugins: [
         new MiniCssExtractPlugin({
             filename: '[name].css',
