@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
     context: __dirname,
@@ -12,7 +13,7 @@ module.exports = {
         filename: "[name].js",
         publicPath: '/dist'
     },
-
+    
     plugins: [
         new MiniCssExtractPlugin({
             filename: '[name].css',
@@ -24,7 +25,8 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
-        })
+        }),
+        new Dotenv()
     ],
 
     module: {
