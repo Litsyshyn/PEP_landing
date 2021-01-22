@@ -8,10 +8,47 @@
         align-items: flex-start;
         padding: 1rem;
         font-size: $font-size-base * 1.25;
+        padding-top: 5%;
         color: #00316D;
+        font-size: $font-size-base;
+
+        h1 {
+            $h1-font-size: $font-size-base * 2.25 !default;
+        }
         
         span {
             padding-top: inherit;
+
+        }
+
+        @media (max-width: $md) {
+
+            h1 {
+                font-size: calc(3.2vw);
+            }
+
+            span{
+                font-size: calc(2.1vw);
+            }
+        }
+
+        @media (max-width: $sm) {
+            padding: 3%;
+
+            h1 {
+                font-size: $font-size-base;
+            }
+
+            span{
+                font-size: calc(4.4vw);
+                padding-left: 2%;
+            }
+            
+            button {
+                span {
+                    padding-left: 0%;
+                }                
+            }
         }
     }
 
@@ -19,18 +56,8 @@
         display: flex;
         justify-content: center;
         order: 1;
-        max-width: 90%; 
+        max-width: 100%; 
         padding: 1rem;
-
-        &-1 {
-            position: relative;
-            z-index: 1;
-            margin-top: -7%;
-        }
-
-        &-2 {
-            position: absolute;
-            z-index: 2;
-        }
     }
 }
+

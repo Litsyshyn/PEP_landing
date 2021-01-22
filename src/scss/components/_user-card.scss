@@ -11,11 +11,28 @@
     }
 
     &__name {
-        line-height: $line-height-base;
+        font-size: $font-size-xxl;
+        color: #00316D;
+        @media (max-width: $sm) {
+            font-size: calc(7vw);
+        }
     }
     &__title {
         display: inline-grid;
-        font-size: large;
-        color:#396090;
+        font-size: $font-size-sm;
+        color: #00316D;
+        @media (max-width: $sm) {
+            span {
+                font-size: calc(3.2vw);
+            }
+        }
+    }
+    @media (max-width: $sm) {
+        border-radius: 0.8em;
+        padding: 0%;
+
+        img {
+            max-width: 20%;
+        }
     }
 }
