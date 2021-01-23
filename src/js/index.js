@@ -1,4 +1,3 @@
-console.log('Вітаю');
 import $ from 'jquery';
 import 'jquery-validation';
 
