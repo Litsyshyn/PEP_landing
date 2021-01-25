@@ -24,11 +24,7 @@
     max-width: 40%;
     object-fit: contain;
     margin-top: -7%;
-
-    // @media (min-width: $sm) {
-    //     max-width: 25%;
-    //     margin-top: -2%;
-    // }
+    cursor: pointer;
 
     @media (min-width: $sm) {
         max-width: 20%;
