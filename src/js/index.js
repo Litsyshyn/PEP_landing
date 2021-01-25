@@ -177,3 +177,32 @@ $('#contact-form').submit(function(event){
         }
     })
 });
+
+$('.link-platform').on('click', function () {
+    window.open(process.env.DO_FRONTEND_HOST + '/system/home/?lang=' + localStorage.getItem('lang')); 
+});
+
+$('.link-cpk').on('click', function () {
+    window.open('https://pep.org.ua/'+ localStorage.getItem('lang')); 
+});
+
+$('#api-docs').on('click', function () {
+    window.open(process.env.DO_BACKEND_HOST + '/schema/redoc/'); 
+});
+
+
+$('#terms_and_conditions').on('click', function () {
+    if (localStorage.getItem('lang') === 'uk') {
+        window.open(process.env.DO_FRONTEND_HOST + '/docs/TermsAndConditionsUk.html');
+    } else {
+        window.open(process.env.DO_FRONTEND_HOST + '/docs/TermsAndConditionsEn.html');
+    }
+});
+
+$('#privacy_policy').on('click', function () {
+    if (localStorage.getItem('lang') === 'uk') {
+        window.open(process.env.DO_FRONTEND_HOST + '/docs/PrivacyPolicyUk.html');
+    } else {
+        window.open(process.env.DO_FRONTEND_HOST + '/docs/PrivacyPolicyEn.html');
+    }
+});
