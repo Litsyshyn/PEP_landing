@@ -23,15 +23,20 @@
             font-weight: 400;
             font-size: $font-size-base;
             text-decoration: none;
-            font-size: $font-size-base;
-
-            span {
-                font-size: $font-size-sm;
-            }
            
             & + & {
                 margin-top: 0;
                 margin-left: $spacer * 3;
+            }
+
+            span {
+                font-size: $font-size-sm;
+            }
+
+            button {
+                span {
+                    font-size: $font-size-base * .6;
+                }
             }
         }
     }

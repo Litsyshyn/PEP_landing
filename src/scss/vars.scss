@@ -62,7 +62,7 @@ $border-radius:               1rem!default;
 $border-radius-lg:            $border-radius * 3.125 !default; 
 // Typography
 $font-family-base:            "Roboto", sans-serif  !default;
-$font-size-base:              1rem !default; //`20px`
+$font-size-base:              1em !default; //`20px`
 $font-size-sm:                $font-size-base * .8 !default; //1em 16px
 $font-size-lg:                $font-size-base * 1.2 !default; //24px
 $font-size-xxl:               $font-size-base * 2.5 !default; //50px
