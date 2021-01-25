@@ -7,13 +7,17 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = {
     context: __dirname,
-    entry: './src/index.js',
+    entry: './static/index',
     output: {
-        path: path.resolve('./dist'),
+        path: path.resolve('./static/dist/'),
         filename: "[name].js",
-        publicPath: '/dist'
+        publicPath: '/static/dist/'
     },
-    
+    resolve: {
+        alias: {
+          static: path.resolve('./static/'),
+        }
+    },
     plugins: [
         new MiniCssExtractPlugin({
             filename: '[name].css',
@@ -107,6 +111,6 @@ module.exports = {
         historyApiFallback: true,
         compress: false,
         hot: true,
-        publicPath: '/dist/',
+        publicPath: '/static/dist/',
     }
 }
