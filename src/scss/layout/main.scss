@@ -19,6 +19,10 @@
     position: relative;
     z-index: 1;
     
+    &_header {
+        padding-top: $spacer * 0;
+    }
+    
     &_background {
         background: $background-color-1;
         h2 {
