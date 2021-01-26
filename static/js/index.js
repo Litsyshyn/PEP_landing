@@ -206,3 +206,73 @@ $('#privacy_policy').on('click', function () {
         window.open(process.env.DO_FRONTEND_HOST + '/docs/PrivacyPolicyEn.html');
     }
 });
+
+$.ajax({
+    url: process.env.DO_BACKEND_HOST + '/api/payment/subscriptions/',
+    type : 'get',
+    error: function() {
+        alert('ERROR.');
+      },
+    success : function(data){
+        let elements = [];
+        const imgPay = [
+            'static/img/icon_free.svg',
+            'static/img/icon_basic.svg',
+            'static/img/icon_premium.svg'
+        ];
+
+            data.forEach (function(subscription, i) {
+            let html = `
+            <div class="payment-card">
+
+            <img src="${imgPay[i]}" alt='tarif_logo'></img>
+
+            <div class="payment-card__name h3">
+                <span>${subscription.name}</span>
+            </div>
+
+            <div class="payment-card__title">
+                <span lang="uk">
+                    Тривалість ${subscription.duration} днів. 
+                    <br>
+                        Максимальна кількість запитів:     
+                        ${subscription.requests_limit}
+                    </br>
+                </span>
+                <span lang="en">
+                    Duration ${subscription.duration} days. 
+                    <br>
+                        Maximum number of requests:
+                        ${subscription.requests_limit}
+                    </br>
+                </span>
+            </div>
+
+                <div class="payment-card__priсe h1 payment-card__priсe_required">
+                    ${subscription.price}
+                    <span lang="uk">грн</span>
+                    <span lang="en">UAH</span>
+                </div>
+
+                <button type="button" class="btn-primary link-platform js-subscription-select" data-id="${subscription.id}">
+                    <span lang="uk">Обрати</span>
+                    <span lang="en">Choose</span>
+                </button>
+            </div>
+            `
+          elements.push(html);
+        });
+
+        $('#payment-box').html(elements)
+
+        changeLang (window.localStorage.getItem('lang'))
+        
+        $('.js-subscription-select').on('click', function () {
+            const subId = $(this).data('id')
+            window.open(process.env.DO_FRONTEND_HOST + '/system/subscriptions/?lang=' +
+             localStorage.getItem('lang') + `&subscription=${subId}`); 
+        });
+    }
+  });
+
+  
