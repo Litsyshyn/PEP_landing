@@ -263,7 +263,7 @@ $.ajax({
           elements.push(html);
         });
 
-        $('.payment-grid').html(elements)
+        $('#payment-box').html(elements)
 
         changeLang (window.localStorage.getItem('lang'))
         
@@ -274,3 +274,5 @@ $.ajax({
         });
     }
   });
+
+  
