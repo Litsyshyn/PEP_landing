@@ -21,9 +21,10 @@
     &__priсe {
         margin-top: 14%;
         margin-bottom: 14%;
+        margin-left: 14%;
         font-size: $font-size-xxl;
         span {
-            vertical-align: super;
+            vertical-align: top;
             font-size: initial;
         }
         &_required span::after {
