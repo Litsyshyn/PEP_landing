@@ -3,30 +3,33 @@
     border-radius: $border-radius-lg;
     background-color: #E2580A;
     color: white;
-    padding: 1em 2em; // $spacer * 1.2 $spacer * 3
-    font-size: 16px;
+    font-size: $font-size-sm;
     font-family: $font-family-base;
     font-weight: 600;
     outline: none;
-    margin-top: 5%;
+    padding: 1em 2em; // $spacer * 1.2 $spacer * 3
+    margin-top: $spacer * 2;
 
-    &_large {
-        padding: $spacer * 1.75 $spacer * 4;
-    }
     &_submit {
         background-color: #1C3FAA;
         margin-left: 53%;
+        @media screen and (max-width: $md) {
+            margin-left: 35%;
+        }
+    }
+
+    @media screen and (max-width: $xl) {
+        margin-top: $spacer * 0;
     }
 }
 
 .btn-primary:hover {
     cursor: pointer;
-    border: 4px solid #FEB084;
-    transition: 0.3s;
 }
 
 .btn-primary:active {
-    border: none;
+    cursor: pointer;
+    border: 4px solid #FEB084;
 }
 
 .btn-primary_submit:hover {
@@ -35,18 +38,4 @@
 
 .btn--has-shadow {
     box-shadow: 0px 10px 16px 0px rgba(77,91,237,0.2);
-}
-
-.menu-btn {
-    display: none;
-    text-align: right;
-}
-
-@media screen and (max-width: $sm) {
-    .menu-btn {
-        display: block;
-        ion-icon {
-            font-size: 30px;
-        }
-    } 
 }
