@@ -156,7 +156,7 @@ $('#contact-form').submit(function(event){
     }
 
     $.ajax({
-        url: 'https://dataocean-ipa.ml/api/landing_mail/',
+        url: process.env.DO_BACKEND_HOST + '/api/landing_mail/',
         type: "POST",
         dataType: "json",
         data: data,
@@ -182,6 +182,10 @@ $('.link-platform').on('click', function () {
     window.open(process.env.DO_FRONTEND_HOST + '/system/home/?lang=' + localStorage.getItem('lang')); 
 });
 
+$('.link-landing').on('click', function () {
+    window.open('https://dataocean.us/lang='+ localStorage.getItem('lang')); 
+});
+
 $('.link-cpk').on('click', function () {
     window.open('https://pep.org.ua/'+ localStorage.getItem('lang')); 
 });
@@ -205,6 +209,17 @@ $('#privacy_policy').on('click', function () {
     } else {
         window.open(process.env.DO_FRONTEND_HOST + '/docs/PrivacyPolicyEn.html');
     }
+});
+
+$('.menu-btn').on('click', function (event) {
+    event.preventDefault();
+    $('.menu-btn').toggleClass('open-menu');
+    $('.menu-navigation').fadeToggle();
+
+    $('.navigation__item').on('click', function (event) {
+        $('.menu-btn').removeClass('open-menu');
+        $('.menu-navigation').fadeOut();
+    })
 });
 
 $.ajax({
@@ -275,4 +290,3 @@ $.ajax({
     }
   });
 
-  

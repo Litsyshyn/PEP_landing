@@ -11,47 +11,52 @@
 <body>
     <header id="header" class="container header">
         <div class="header-logo header__item">
-            <img src="static/img/logo.png" class="header-logo_DO link-platform">
+            <img src="static/img/logo.png" class="header-logo_DO link-landing">
             <img src="static/img/logo_cpk.svg" class="header-logo_PEP link-cpk">
         </div>
-        <nav class="navigation header__item">
-            <ul id="navigation" class="nav-link">
-                <a class="navigation__item" href="#registry_capabilities">
-                    <span lang="uk">Можливості реєстру</span>
-                    <span lang="en">Registry capabilities</span>
-                </a>
-                <a class="navigation__item" href="#subscriptions">
-                    <span lang="uk">Тарифні плани</span>
-                    <span lang="en">Subscriptions</span>
-                </a>
-                <a class="navigation__item" href="#contacts">
-                    <span lang="uk">Контакти</span>
-                    <span lang="en">Contacts</span>
-                </a>
-            </ul>
-            <ul class="nav-sign">
-                <a class="navigation__item" href="#">
-                    <span lang="uk">Увійти</span>
-                    <span lang="en">Log in</span>
-                </a>
-                <a class="navigation__item nav-sign_button" href="#">
-                    <span lang="uk">Зареєструватись</span>
-                    <span lang="en">Sign up</span>
-                </a>
-                <button id="change-lang" class="navigation__item select_lang">
-                    <img lang="uk" src="static/img/usa_flag.svg">
-                    <span class="select_lang" lang="uk">English</span>
-                    <img lang="en" src="static/img/ukraine_flag.svg">
-                    <span class="select_lang" lang="en">Українська</span>
-                </button>
-            </ul>
-        </nav>
+        <div class="navigation">
+            <div id="menu-btn" class="menu-btn">
+                <span></span>
+            </div>
+            <nav class="menu-navigation">
+                <ul class="nav-link">
+                    <a class="navigation__item" href="#registry_capabilities">
+                        <span lang="uk">Можливості реєстру</span>
+                        <span lang="en">Registry capabilities</span>
+                    </a>
+                    <a class="navigation__item" href="#subscriptions">
+                        <span lang="uk">Тарифні плани</span>
+                        <span lang="en">Subscriptions</span>
+                    </a>
+                    <a class="navigation__item" href="#contacts">
+                        <span lang="uk">Контакти</span>
+                        <span lang="en">Contacts</span>
+                    </a>
+                </ul>
+                <ul class="nav-sign">
+                    <a id="login" class="navigation__item link-platform" href="#">
+                        <span lang="uk">Увійти</span>
+                        <span lang="en">Log in</span>
+                    </a>
+                    <a class="navigation__item nav-sign_button link-platform" href="#">
+                        <span lang="uk">Зареєструватись</span>
+                        <span lang="en">Sign up</span>
+                    </a>
+                    <button id="change-lang" class="navigation__item select_lang">
+                        <img lang="uk" src="static/img/usa_flag.svg">
+                        <span class="select_lang" lang="uk">English</span>
+                        <img lang="en" src="static/img/ukraine_flag.svg">
+                        <span class="select_lang" lang="en">Українська</span>
+                    </button>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <section class="section section_header">
         <div class="container">
             <div class="hero-block row row_vertical-spaces">
-                <div class="col-md-6 hero-block hero-block__left">
+                <div class="col-sm-6 hero-block hero-block__left">
                     <h1 class="h1" lang="uk">Отримайте доступ до реєстру національних публічних діячів</h1>
                     <h1 class="h1" lang="en">Get an access to the Public register of politically exposed persons of Ukraine</h1>
                     <span lang="uk">
@@ -62,13 +67,13 @@
                         Data Ocean is a provider of a convenient access to a visualized register of politically exposed persons. 
                         We are also the first company in Ukraine to provide software developers with an access using the Rest API.
                     </span>
-                    <button class="btn-primary btn--has-shadow link-platform">
+                    <button class="btn-primary link-platform">
                         <span lang="uk">Спробувати безкоштовно</span>
                         <span lang="en">Try for free</span>
                     </button>
                 </div>
-                <div class="col-md-6 hero-block hero-block_image"> 
-                    <img class="landing-image" src="static/img/img_header.svg">
+                <div class="col-sm-6 hero-block hero-block_image"> 
+                    <img src="static/img/img_header.svg">
                 </div>
             </div>
         </div>
@@ -122,14 +127,14 @@
     </section>
 
     <section id="registry_capabilities" class="section">
-        <div class="container">
+        <div class="container margin-list">
             <h2 class="h2" lang="uk">Можливості реєстру</h2>
             <h2 class="h2" lang="en">Registry capabilities</h2>
             <div class="row row_vertical-spaces">
-                <div class="col-lg-6 landing-image">
+                <div class="col-sm-6 landing-image margin-list__item">
                     <img class="landing-image" src="static/img/image_1.svg">
                 </div> 
-                <div class="col-lg-6 margin-list">
+                <div class="col-sm-6 margin-list margin-list__item">
                     <h4 class="h4">
                         <img src="static/img/rectangle.svg">
                         <span lang="uk">Візуалізація зв’язків публічної особи</span>
@@ -148,7 +153,9 @@
                         <span lang="en">Try for free</span>
                     </button>
                 </div>
-                <div class="col-lg-6 margin-list">
+            </div>
+            <div class="row row_vertical-spaces">
+                <div class="col-sm-6 margin-list margin-list__item">
                     <h4 class="h4">
                         <img src="static/img/rectangle.svg">
                         <span lang="uk">Кому потрібен реєстр</span>
@@ -163,13 +170,15 @@
                         With the help of the register, banks, insurance companies, payment systems, auditors, and financial leasing institutions are already checking customers.
                     </span>        
                 </div>
-                <div class="col-lg-6 landing-image">
+                <div class="col-sm-6 landing-image margin-list__item">
                     <img class="landing-image" src="static/img/image_2.svg">
                 </div>
-                <div class="col-lg-6 landing-image">
+            </div>
+            <div class="row row_vertical-spaces">
+                <div class="col-sm-6 landing-image margin-list__item">
                     <img class="landing-image" src="static/img/image_3.svg">
                 </div>
-                <div class="col-lg-6 margin-list">
+                <div class="col-sm-6 margin-list margin-list__item">
                     <h4 class="h4">
                         <img src="static/img/rectangle.svg">
                         <span lang="uk">Доступ до реєстру через Rest API</span>
@@ -269,7 +278,7 @@
         <div class="container">
             <div class="footer">
                 <div class="footer__item footer-logo">
-                    <img class="footer-logo footer-logo_do link-platform" src="static/img/logo-white.svg">
+                    <img class="footer-logo footer-logo_do link-landing" src="static/img/logo-white.svg">
                     <img class="footer-logo link-cpk" src="static/img/cpk.svg">
                 </div>
 
@@ -297,10 +306,10 @@
                         <span lang="en">Privacy Policy</span>
                     </a>
                 </ul>
-                <ul>
+                <ul class="footer_item">
                     <a href="https://www.facebook.com/DataOceanGroup/" target="_blank"><img src="static/img/fb.svg"></a>
-                    <a href="https://www.linkedin.com/company/data-ocean/" target="_blank"><img src="static/img/linkedin.svg"></a>
-                    <a href="mailto:info@dataocean.us"><img src="static/img/mail.svg"></a>
+                    <a href="https://www.linkedin.com/company/data-ocean/" target="_blank"><img class="footer_social-logo" src="static/img/linkedin.svg"></a>
+                    <a href="mailto:info@dataocean.us"><img class="footer_social-logo" src="static/img/mail.svg"></a>
                 </ul>
             </div>
             <div class="footer-copyright">

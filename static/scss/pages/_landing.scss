@@ -3,13 +3,19 @@
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-column-gap: $spacer * 3;
     grid-row-gap: $spacer * 3;
+    padding: $spacer * 2 0;
 
-    @media (max-width: $lg) {
+    @media (max-width: $xl) {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(100px, 1fr));
+    }
+
+    @media (max-width: $sm) {
         display: grid;
         grid-template-columns: repeat(2, minmax(100px, 1fr));
         grid-column-gap: 4%;
         grid-row-gap: 7%;
-        padding-bottom: 5%;
+        margin-bottom: 4%;
     }
 }
 
@@ -21,13 +27,13 @@
 }
 
 .landing-image{
-    justify-content: center;
-    position: relative;
-    display: inline-flex;
     max-width: 90%;
+    text-align: end;
 
     @media (min-width: $md) {
-        max-width: 100%;
+        justify-content: center;
+        position: relative;
+        display: inline-flex;
     }
 }
 
@@ -36,9 +42,16 @@
     flex-direction: column;
     justify-content: center;
     color: #00316D;
+    padding-bottom: 10%;
 
     @media (min-width: $md) {
         display: flex;
         flex-direction: row;
+        padding-bottom: $spacer * 10;
+    }
+    @media (min-width: $sm) {
+        max-width: 80%;
+        padding-left: 10%;
     }
 }
+

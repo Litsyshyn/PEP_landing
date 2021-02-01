@@ -1,14 +1,15 @@
 .hero-block {
     position: relative;
     z-index: 1;
+    padding-bottom: inherit;
 
     &__left {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        padding: 1rem;
+        padding-left: $spacer * 6;
+        padding-top: $spacer * 6;
         font-size: $font-size-base * 1.25;
-        padding-top: 5%;
         color: #00316D;
         font-size: $font-size-base;
 
@@ -17,11 +18,14 @@
         }
         
         span {
-            padding-top: inherit;
+            padding-top: $spacer * 3;
+            padding-bottom: $spacer * 3;
 
         }
 
         @media (max-width: $md) {
+            padding: 0;
+            padding-top: $spacer * 4;
 
             h1 {
                 font-size: calc(3.2vw);
@@ -33,8 +37,6 @@
         }
 
         @media (max-width: $sm) {
-            padding: 3%;
-
             h1 {
                 font-size: $font-size-base;
             }
@@ -54,10 +56,14 @@
 
     &_image {
         display: flex;
-        justify-content: center;
-        order: 1;
-        max-width: 100%; 
-        padding: 1rem;
+        img {
+            max-width: 100%;
+        }
+        @media (max-width: $lg) {
+            img {
+                width: 582px;
+            }
+        }
     }
 }
 

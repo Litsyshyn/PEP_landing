@@ -1,26 +1,8 @@
-.container {
-    font-size: $font-size-base;
-    font-weight: $font-weight-base;
-    line-height: $line-height;
-    max-width: 1280px;
-    margin: 0 auto;
-    padding-left: $spacer * 2;
-    padding-right: $spacer * 2;
-    overflow: hidden;
-    
-    @media (min-width: $sm) {
-        padding-left: $spacer * 4;
-        padding-right: $spacer * 4;
-    }
-}
-
 .section {
-    padding: $spacer * 5;
     position: relative;
-    z-index: 1;
     
     &_header {
-        padding-top: $spacer * 0;
+        margin-top: -2%;
     }
     
     &_background {
@@ -40,12 +22,33 @@
     &_background-2 {
         background: $gradient-color-2;
         h2 {
-            padding-bottom: 4%;
+            padding-bottom: $spacer * 6.5;
+            padding-top: $spacer * 6;
+        }
+        @media (max-width: $md) {
+            h2 {
+                font-size: 24px;
+            }
         }
     }
+}
 
-    @media (max-width: $sm) {
-        padding: 10% 0%;
+.container {
+    font-size: $font-size-base;
+    font-weight: $font-weight-base;
+    line-height: $line-height;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: $spacer;
+    overflow: hidden;
+    position: relative;
+    
+    @media (min-width: $sm) {
+        padding: $spacer $spacer * 2;
+    }
+
+    @media (min-width: $xl) {
+        padding: $spacer * 4 $spacer * 10;
     }
 }
 
