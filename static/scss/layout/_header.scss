@@ -37,7 +37,8 @@
     
     &_PEP {
         align-self: flex-end;
-        max-width: 40%;
+        max-width: 30%;
+        margin-bottom: -1%;
         padding-left: 7%;
     }
     @media (min-width: $sm) {
@@ -62,11 +63,11 @@
         margin-top: -1%;
 
         &_DO {
-            max-width: 188px;
+            max-width: 167px;
         }
     
         &_PEP {
-            max-width: 182px;
+            max-width: 159px;
             align-self: flex-start;
             padding-top: 27px;
             padding-left: 4%;
