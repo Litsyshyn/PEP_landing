@@ -1,12 +1,13 @@
 import $ from 'jquery';
 import 'jquery-validation';
+import 'jquery-modal';
 
 const allowedLanguages = ['uk', 'en'];
 
 let langs = {
     messageSuccess: {
-        uk: 'Тепер Ви будете в курсі всіх новин про DataOcean!',
-        en: 'Now you will be able to keep up with all of DataOcean updates!',
+        uk: 'Дякуємо за звернення! Постараємося відповісти якнайшвидше.',
+        en: 'Thank you for contacting us! We will get back to you soon.',
     },
     messageError: {
         uk: 'Помилка. Дані не відправлені',
@@ -133,9 +134,19 @@ $('#change-lang').click(function(event) {
 
 $(document).ready(() => {
     const langFromLocalStorage = localStorage.getItem('lang');
-    if (allowedLanguages.includes(langFromLocalStorage)) {
-        changeLang(langFromLocalStorage);
-    } else {
+    const langFromUrl = new URLSearchParams(location.search).get('lang');
+    
+    if ( !langFromUrl ) {
+        return
+    }
+    if (allowedLanguages.includes(langFromLocalStorage && langFromUrl)) {
+        if ( langFromUrl === langFromLocalStorage ) {
+            changeLang(langFromLocalStorage);
+        } else {
+            changeLang(langFromUrl);
+            localStorage.setItem('lang', langFromUrl);
+        }
+    } else { 
         changeLang('uk');
     }
 });
@@ -183,7 +194,7 @@ $('.link-platform').on('click', function () {
 });
 
 $('.link-landing').on('click', function () {
-    window.open('https://dataocean.us/lang='+ localStorage.getItem('lang')); 
+    window.open('https://dataocean.us/?lang='+ localStorage.getItem('lang')); 
 });
 
 $('.link-cpk').on('click', function () {
@@ -197,9 +208,9 @@ $('#api-docs').on('click', function () {
 
 $('#terms_and_conditions').on('click', function () {
     if (localStorage.getItem('lang') === 'uk') {
-        window.open(process.env.DO_FRONTEND_HOST + '/docs/TermsAndConditionsUk.html');
+        window.location.assign(process.env.DO_FRONTEND_HOST + '/docs/TermsAndConditionsUk.html');
     } else {
-        window.open(process.env.DO_FRONTEND_HOST + '/docs/TermsAndConditionsEn.html');
+        window.location.assign(process.env.DO_FRONTEND_HOST + '/docs/TermsAndConditionsEn.html');
     }
 });
 
@@ -265,8 +276,8 @@ $.ajax({
 
                 <div class="payment-card__priсe h1 payment-card__priсe_required">
                     ${subscription.price}
-                    <span lang="uk">грн</span>
-                    <span lang="en">UAH</span>
+                    <span lang="uk">грн/міс</span>
+                    <span lang="en">UAH/p.m.</span>
                 </div>
 
                 <button type="button" class="btn-primary link-platform js-subscription-select" data-id="${subscription.id}">
@@ -289,4 +300,3 @@ $.ajax({
         });
     }
   });
-

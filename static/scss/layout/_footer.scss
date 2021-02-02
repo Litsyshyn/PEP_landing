@@ -41,8 +41,9 @@
     display: block;
     flex-direction: column;
     cursor: pointer;
-    &_do {
-        margin-bottom: $spacer * 6;
+    &_cpk {
+        margin-top: $spacer * 4;
+        margin-left: auto;
     }
 }
 

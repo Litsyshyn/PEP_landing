@@ -12,7 +12,7 @@
     <header id="header" class="container header">
         <div class="header-logo header__item">
             <img src="static/img/logo.png" class="header-logo_DO link-landing">
-            <img src="static/img/logo_cpk.svg" class="header-logo_PEP link-cpk">
+            <img src="static/img/logo_pep.svg" class="header-logo_PEP link-cpk">
         </div>
         <div class="navigation">
             <div id="menu-btn" class="menu-btn">
@@ -34,7 +34,7 @@
                     </a>
                 </ul>
                 <ul class="nav-sign">
-                    <a id="login" class="navigation__item link-platform" href="#">
+                    <a id="login" class="navigation__item" href="#modal" rel="modal:open">
                         <span lang="uk">Увійти</span>
                         <span lang="en">Log in</span>
                     </a>
@@ -57,15 +57,15 @@
         <div class="container">
             <div class="hero-block row row_vertical-spaces">
                 <div class="col-sm-6 hero-block hero-block__left">
-                    <h1 class="h1" lang="uk">Отримайте доступ до реєстру національних публічних діячів</h1>
+                    <h1 class="h1" lang="uk">Отримайте доступ до Реєстру національних публічних діячів</h1>
                     <h1 class="h1" lang="en">Get an access to the Public register of politically exposed persons of Ukraine</h1>
                     <span lang="uk">
                         Data Ocean — провайдер зручного доступу до відкритих даних. 
-                        Ми перші в Україні надаємо доступ до Реєстру PEP за допомогою Rest API.
+                        Ми перші в Україні надаємо доступ до <a class="link-cpk">Реєстру національних публічних діячів</a> за допомогою Rest API.
                     </span>
                     <span lang="en">
-                        Data Ocean is a provider of a convenient access to a visualized register of politically exposed persons. 
-                        We are also the first company in Ukraine to provide software developers with an access using the Rest API.
+                        Data Ocean is a provider with a convenient access to open data.
+                        We are the first company in Ukraine to give access <a class="link-cpk">to the Public register of politically exposed persons</a> using the Rest API.
                     </span>
                     <button class="btn-primary link-platform">
                         <span lang="uk">Спробувати безкоштовно</span>
@@ -278,8 +278,8 @@
         <div class="container">
             <div class="footer">
                 <div class="footer__item footer-logo">
-                    <img class="footer-logo footer-logo_do link-landing" src="static/img/logo-white.svg">
-                    <img class="footer-logo link-cpk" src="static/img/cpk.svg">
+                    <img class="footer-logo link-landing" src="static/img/logo-white.svg">
+                    <img class="footer-logo footer-logo_cpk link-cpk" src="static/img/cpk.svg">
                 </div>
 
                 <ul class="footer__item">
@@ -333,6 +333,25 @@
             </div>
         </div>
     </footer>
+
+    <!-- <div id="ex2" class="modal">
+        <p>Thanks for clicking. That felt good.</p>
+        <a href="#" rel="modal:close">Close</a>
+    </div> -->
+<!-- 
+    <form action="" class="login_form modal" id="ex2" style="display:none;">
+        <h3>Please login to continue</h3>
+        <p><label>Username:</label><input type="text" /></p>
+        <p><label>Password:</label><input type="password" /></p>
+        <p><input type="submit" value="Login" /></p>
+    </form> -->
+
+    <!-- <div id="modal" class="modal-window">
+        <div class="popup">
+            <a class="popup-close" href="#">Закрыть</a>
+            <p>Всплывающие окна имеют широкий диапазон применений...</p>
+        </div>		
+    </div> -->
 
     <script src="static/dist/main.js"></script>
 </body>

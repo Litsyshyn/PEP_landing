@@ -16,6 +16,13 @@
     transition: 0.25s;
 }
 
+.link-cpk:hover {
+    color:#2A4FB6;
+    cursor: pointer;
+    text-decoration: underline;
+    z-index: 1;
+}
+
 .select_lang {
     align-self: center;
     vertical-align: middle;
