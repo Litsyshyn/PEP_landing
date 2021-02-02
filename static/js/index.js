@@ -139,14 +139,11 @@ $(document).ready(() => {
     if ( !langFromUrl ) {
         return
     }
-    if (allowedLanguages.includes(langFromLocalStorage && langFromUrl)) {
-        if ( langFromUrl === langFromLocalStorage ) {
-            changeLang(langFromLocalStorage);
-        } else {
-            changeLang(langFromUrl);
-            localStorage.setItem('lang', langFromUrl);
-        }
-    } else { 
+    if (allowedLanguages.includes(langFromUrl)) {
+        changeLang(langFromUrl);
+    } else if (allowedLanguages.includes(langFromLocalStorage)) {
+        changeLang(langFromLocalStorage);
+    } else {
         changeLang('uk');
     }
 });
