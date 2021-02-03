@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "jquery": "^3.5.1",
+    "jquery-modal": "^0.9.2",
     "jquery-validation": "^1.19.3",
     "reset-css": "^5.0.1"
   }
