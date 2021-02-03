@@ -297,3 +297,39 @@ $.ajax({
         });
     }
   });
+
+$.ajax({
+    type: 'GET',
+    url: process.env.DO_BACKEND_HOST + '/api/stats/count-peps/',
+    dataType: 'JSON',
+    success: function(data) {
+        $('#peps').html(data.peps_count);
+    },
+});
+
+$.ajax({
+    type: 'GET',
+    url: process.env.DO_BACKEND_HOST + '/api/stats/count-pep-related-persons/',
+    dataType: 'JSON',
+    success: function(data) {
+        $('#pep-rp').html(data.pep_related_persons_count);
+    },
+});
+
+$.ajax({
+    type: 'get',
+    url: process.env.DO_BACKEND_HOST + '/api/stats/count-pep-related-companies/',
+    dataType: 'JSON',
+    success: function(data) {
+        $('#pep-rc').html(data.pep_related_companies_count);
+    }
+ });
+
+$.ajax({
+    type: 'get',
+    url: process.env.DO_BACKEND_HOST + '/api/stats/count-pep-relation-categories/',
+    dataType: 'JSON',
+    success: function(data) {
+        $('#pep-categories').html(data.business_pep_relations_count + data.personal_pep_relations_count + data.family_pep_relations_count);
+    }
+});
