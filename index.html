@@ -34,11 +34,11 @@
                     </a>
                 </ul>
                 <ul class="nav-sign">
-                    <a id="login" class="navigation__item" href="#modal" rel="modal:open">
+                    <a id="login" class="navigation__item link-platform">
                         <span lang="uk">Увійти</span>
                         <span lang="en">Log in</span>
                     </a>
-                    <a class="navigation__item nav-sign_button link-platform" href="#">
+                    <a class="navigation__item nav-sign_button link-platform">
                         <span lang="uk">Зареєструватись</span>
                         <span lang="en">Sign up</span>
                     </a>
@@ -83,40 +83,28 @@
         <div class="container">
             <div class="data-grid">
                 <div class="user-card">
-                    <img src="static/img/15.svg">
-                    <div class="user-card__name h1">
-                        2562
-                    </div>
+                    <div id="peps" class="user-card__name h1"></div>
                     <div class="user-card__title">
                         <span lang="uk">Публічних діячів</span>
                         <span lang="en">politically exposed persons</span>        
                     </div>
                 </div>
                 <div class="user-card">
-                    <img src="static/img/15.svg">
-                    <div class="user-card__name h1">
-                        25620
-                    </div>
+                    <div id="pep-rp" class="user-card__name h1"></div>
                     <div class="user-card__title">
                         <span lang="uk">Пов’язаних осіб</span>
                         <span lang="en">connections to individuals</span>        
                     </div>
                 </div>
                 <div class="user-card">
-                    <img src="static/img/15.svg">
-                    <div class="user-card__name h1">
-                        462
-                    </div>
+                    <div id="pep-rc" class="user-card__name h1"></div>
                     <div class="user-card__title">
                         <span lang="uk">Пов’язаних компаній</span>
                         <span lang="en">connections to companies</span>        
                     </div>
                 </div>
                 <div class="user-card">
-                    <img src="static/img/15.svg">
-                    <div class="user-card__name h1">
-                        1516
-                    </div>
+                    <div id="pep-categories" class="user-card__name h1"></div>
                     <div class="user-card__title">
                         <span lang="uk">Кількість звязків по типу</span>
                         <span lang="en">amound of connections by type</span>        
@@ -279,7 +267,7 @@
             <div class="footer">
                 <div class="footer__item footer-logo">
                     <img class="footer-logo link-landing" src="static/img/logo-white.svg">
-                    <img class="footer-logo footer-logo_cpk link-cpk" src="static/img/cpk.svg">
+                    <img class="footer-logo_cpk link-cpk" src="static/img/cpk.svg">
                 </div>
 
                 <ul class="footer__item">
@@ -315,15 +303,15 @@
             <div class="footer-copyright">
                 <div class="footer-copyright__slogan">
                     <span lang="uk">
-                        Реєстр є охоронюваним об’єктом авторського права, належного ГО «Центр протидії корупції» відповідно до Закону України «Про авторське право і суміжні права». 
+                        Реєстр <a class="link-cpk">pep.org.ua</a> є охоронюваним об’єктом авторського права, що належить ГО «Центр протидії корупції» відповідно до Закону України «Про авторське право і суміжні права». 
                         Жодну частину цих матеріалів не можна відтворювати, використовувати в будь-якому форматі, включаючи графічний, електронний, ксерокопіювальний чи будь-який інший спосіб, 
-                        без відповідного посилання на цей сайт.
-                        Data Ocean забезпечує технічну підтримку Реєстру та має ексклюзивне право укладати комерційні договори про надання доступу до реєстру.     
+                        без відповідного посилання на сайт <a class="link-cpk">pep.org.ua</a>.
+                        Data Ocean забезпечує технічну підтримку Реєстру та має ексклюзивне право укладати комерційні договори про надання доступу до реєстру у форматі відкритих даних.     
                     </span>
                     <span lang="en">
-                        The Register is a protected copyrighted object, owned by the NGO "Center for Combating Corruption" in accordance with the Law of Ukraine "On Copyright and Related Rights". 
-                        No part of this material may be reproduced, used in any format, including graphic, electronic, photocopying or in any other way, without a proper link to this site.
-                        Data Ocean provides a technical support to the Registry and has the exclusive right to constitute commercial agreements about letting in on the Registry.
+                        The Register <a class="link-cpk">pep.org.ua</a> is a protected copyrighted object, owned by the NGO "Center for Combating Corruption" in accordance with the Law of Ukraine "On Copyright and Related Rights". 
+                        No part of this material may be reproduced, used in any format, including graphic, electronic, photocopying or in any other way, without a proper link to the website <a class="link-cpk">pep.org.ua</a>.
+                        Data Ocean provides a technical support to the Registry and has the exclusive right to constitute commercial agreements about letting in open data format Registry.
                     </span>
                 </div>
                 <div class="footer-copyright__copyright">
@@ -333,25 +321,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- <div id="ex2" class="modal">
-        <p>Thanks for clicking. That felt good.</p>
-        <a href="#" rel="modal:close">Close</a>
-    </div> -->
-<!-- 
-    <form action="" class="login_form modal" id="ex2" style="display:none;">
-        <h3>Please login to continue</h3>
-        <p><label>Username:</label><input type="text" /></p>
-        <p><label>Password:</label><input type="password" /></p>
-        <p><input type="submit" value="Login" /></p>
-    </form> -->
-
-    <!-- <div id="modal" class="modal-window">
-        <div class="popup">
-            <a class="popup-close" href="#">Закрыть</a>
-            <p>Всплывающие окна имеют широкий диапазон применений...</p>
-        </div>		
-    </div> -->
 
     <script src="static/dist/main.js"></script>
 </body>
