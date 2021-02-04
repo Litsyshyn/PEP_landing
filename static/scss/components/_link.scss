@@ -15,11 +15,9 @@
     text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
     transition: 0.25s;
 }
-.link-cpk {
-    z-index: 1;
-}
 
-.link-cpk:hover {
+.link-cpk{
+    z-index: 1;
     color:#2A4FB6;
     cursor: pointer;
     text-decoration: underline;

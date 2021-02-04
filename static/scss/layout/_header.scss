@@ -43,8 +43,8 @@
         z-index: 1;
     }
     @media (min-width: $sm) {
-        margin-top: -5%;
         flex-direction: column;
+        margin-top: -5%;
 
         &_DO {
             max-width: 20%;

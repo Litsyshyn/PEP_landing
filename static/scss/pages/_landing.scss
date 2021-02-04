@@ -35,6 +35,10 @@
         position: relative;
         display: inline-flex;
     }
+
+    @media (max-width: $sm) {
+        order: -1;
+    }
 }
 
 .landing-feedback {
