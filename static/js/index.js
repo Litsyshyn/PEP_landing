@@ -245,6 +245,9 @@ $.ajax({
         ];
 
             data.forEach (function(subscription, i) {
+            const requestsLimitEn = `${subscription.requests_limit.toLocaleString("en")}`;
+            const subscriptionPriceEn = `${subscription.price.toLocaleString("en")}`;
+
             let html = `
             <div class="payment-card">
 
@@ -266,15 +269,20 @@ $.ajax({
                     Duration ${subscription.duration} days. 
                     <br>
                         Maximum number of requests:
-                        ${subscription.requests_limit}
+                        ${requestsLimitEn}
                     </br>
                 </span>
             </div>
 
                 <div class="payment-card__priсe h1 payment-card__priсe_required">
-                    ${subscription.price}
-                    <span lang="uk">грн/міс</span>
-                    <span lang="en">UAH/month</span>
+                    <div lang="uk">
+                        ${subscription.price}
+                        <span lang="uk">грн</span>
+                    </div>
+                    <div lang="en">
+                        ${subscriptionPriceEn}
+                        <span lang="en">UAH</span>
+                    </div>
                 </div>
 
                 <button type="button" class="btn-primary link-platform js-subscription-select" data-id="${subscription.id}">
