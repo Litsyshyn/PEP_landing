@@ -245,25 +245,8 @@ $.ajax({
         ];
 
             data.forEach (function(subscription, i) {
-            
-            function formatNum(num) {
-                let arr = num.split('');
-                let numtemp = '';
-                if (num.length > 3) {
-                    for (let i = arr.length - 1, j = 1; i >= 0; i--, j++) {
-                        numtemp = arr[i] + numtemp;
-                        if (j % 3 == 0) {
-                            numtemp = ',' + numtemp;
-                        }
-                    }
-                    return numtemp;
-                } else {
-                    return num;
-                }
-            };
-
-            const requestsLimit = formatNum(`${subscription.requests_limit}`);
-            const subscriptionPrice = formatNum(`${subscription.price}`);
+            const requestsLimitEn = `${subscription.requests_limit.toLocaleString("en")}`;
+            const subscriptionPriceEn = `${subscription.price.toLocaleString("en")}`;
 
             let html = `
             <div class="payment-card">
@@ -286,7 +269,7 @@ $.ajax({
                     Duration ${subscription.duration} days. 
                     <br>
                         Maximum number of requests:
-                        ${requestsLimit}
+                        ${requestsLimitEn}
                     </br>
                 </span>
             </div>
@@ -297,7 +280,7 @@ $.ajax({
                         <span lang="uk">грн</span>
                     </div>
                     <div lang="en">
-                        ${subscriptionPrice}
+                        ${subscriptionPriceEn}
                         <span lang="en">UAH</span>
                     </div>
                 </div>
