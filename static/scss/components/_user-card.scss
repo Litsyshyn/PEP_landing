@@ -39,7 +39,7 @@
     }
 
     @media (max-width: $md) {
-        padding: 0px;
+        padding: $spacer * 2;
 
         img {
             margin-left: 50%;

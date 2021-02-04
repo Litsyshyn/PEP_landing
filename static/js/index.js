@@ -274,7 +274,7 @@ $.ajax({
                 <div class="payment-card__priсe h1 payment-card__priсe_required">
                     ${subscription.price}
                     <span lang="uk">грн/міс</span>
-                    <span lang="en">UAH/p.m.</span>
+                    <span lang="en">UAH/month</span>
                 </div>
 
                 <button type="button" class="btn-primary link-platform js-subscription-select" data-id="${subscription.id}">
@@ -323,7 +323,7 @@ $.ajax({
     success: function(data) {
         $('#pep-rc').html(data.pep_related_companies_count);
     }
- });
+});
 
 $.ajax({
     type: 'get',
