@@ -21,11 +21,12 @@
     &__priсe {
         margin-top: 14%;
         margin-bottom: 14%;
-        margin-left: 14%;
+        margin-left: 17%;
         font-size: $font-size-xxl;
         span {
             vertical-align: top;
             font-size: initial;
+            font-weight: normal;
         }
         &_required span::after {
             content: "*";

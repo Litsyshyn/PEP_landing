@@ -245,6 +245,26 @@ $.ajax({
         ];
 
             data.forEach (function(subscription, i) {
+            
+            function formatNum(num) {
+                let arr = num.split('');
+                let numtemp = '';
+                if (num.length > 3) {
+                    for (let i = arr.length - 1, j = 1; i >= 0; i--, j++) {
+                        numtemp = arr[i] + numtemp;
+                        if (j % 3 == 0) {
+                            numtemp = ',' + numtemp;
+                        }
+                    }
+                    return numtemp;
+                } else {
+                    return num;
+                }
+            };
+
+            const requestsLimit = formatNum(`${subscription.requests_limit}`);
+            const subscriptionPrice = formatNum(`${subscription.price}`);
+
             let html = `
             <div class="payment-card">
 
@@ -266,15 +286,20 @@ $.ajax({
                     Duration ${subscription.duration} days. 
                     <br>
                         Maximum number of requests:
-                        ${subscription.requests_limit}
+                        ${requestsLimit}
                     </br>
                 </span>
             </div>
 
                 <div class="payment-card__priсe h1 payment-card__priсe_required">
-                    ${subscription.price}
-                    <span lang="uk">грн/міс</span>
-                    <span lang="en">UAH/month</span>
+                    <div lang="uk">
+                        ${subscription.price}
+                        <span lang="uk">грн</span>
+                    </div>
+                    <div lang="en">
+                        ${subscriptionPrice}
+                        <span lang="en">UAH</span>
+                    </div>
                 </div>
 
                 <button type="button" class="btn-primary link-platform js-subscription-select" data-id="${subscription.id}">
