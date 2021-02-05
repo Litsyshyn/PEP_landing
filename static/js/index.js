@@ -119,6 +119,7 @@ function changeLang (languageCode) {
             }
         });
     } else {
+        changeLang('uk');
         throw new Error("LangCode " + languageCode + " not supported");
     }
 }
@@ -203,7 +204,7 @@ $('#api-docs').on('click', function () {
 });
 
 
-$('#terms_and_conditions').on('click', function () {
+$('.terms_and_conditions').on('click', function () {
     if (localStorage.getItem('lang') === 'uk') {
         window.location.assign(process.env.DO_FRONTEND_HOST + '/docs/TermsAndConditionsUk.html');
     } else {
@@ -211,7 +212,7 @@ $('#terms_and_conditions').on('click', function () {
     }
 });
 
-$('#privacy_policy').on('click', function () {
+$('.privacy_policy').on('click', function () {
     if (localStorage.getItem('lang') === 'uk') {
         window.open(process.env.DO_FRONTEND_HOST + '/docs/PrivacyPolicyUk.html');
     } else {
@@ -235,7 +236,7 @@ $.ajax({
     type : 'get',
     error: function() {
         alert('ERROR.');
-      },
+    },
     success : function(data){
         let elements = [];
         const imgPay = [
@@ -291,17 +292,17 @@ $.ajax({
                 </button>
             </div>
             `
-          elements.push(html);
+            elements.push(html);
         });
 
         $('#payment-box').html(elements)
 
-        changeLang (window.localStorage.getItem('lang'))
+        changeLang(window.localStorage.getItem('lang') || 'uk')
         
         $('.js-subscription-select').on('click', function () {
             const subId = $(this).data('id')
             window.open(process.env.DO_FRONTEND_HOST + '/system/subscriptions/?lang=' +
-             localStorage.getItem('lang') + `&subscription=${subId}`); 
+            localStorage.getItem('lang') + `&subscription=${subId}`); 
         });
     }
   });
@@ -325,7 +326,7 @@ $.ajax({
 });
 
 $.ajax({
-    type: 'get',
+    type: 'GET',
     url: process.env.DO_BACKEND_HOST + '/api/stats/count-pep-related-companies/',
     dataType: 'JSON',
     success: function(data) {
@@ -334,7 +335,7 @@ $.ajax({
 });
 
 $.ajax({
-    type: 'get',
+    type: 'GET',
     url: process.env.DO_BACKEND_HOST + '/api/stats/count-pep-relation-categories/',
     dataType: 'JSON',
     success: function(data) {
