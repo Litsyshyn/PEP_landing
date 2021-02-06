@@ -50,6 +50,10 @@
     @media (min-width: $xl) {
         padding: $spacer * 4 $spacer * 10;
     }
+
+    &_payments {
+        text-align: center;
+    }
 }
 
 @import 'footer';
