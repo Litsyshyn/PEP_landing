@@ -29,6 +29,15 @@
     }
 }
 
+.navigation__item:hover {
+    color: #0461D2;
+}
+
+.navigation__item:active {
+    color: #00316D;
+    font-weight: bold;
+}
+
 .menu-navigation {
     display: contents;
 }
@@ -47,8 +56,13 @@
         padding-inline-start: 7%;
         padding-inline-end: 7%;
     }
+
+    &_button:hover {
+        background-color: #B6D7FF;
+        color: #00316D;
+    }
     
-    &_button:active{
+    &_button:active {
         background: #074B9E;
         color:white;
     }
