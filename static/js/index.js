@@ -271,7 +271,7 @@ $.ajax({
                         ${requestsLimitEn}
                         API-requests
                     <br>
-                        ${ !subscription.is_default ? ('Unlimits views') : subscription.platform_requests_limit + ' Views'}
+                        ${ !subscription.is_default ? ('Unlimited views') : subscription.platform_requests_limit + ' Views'}
                 </span>
             </div>
 

@@ -19,6 +19,7 @@
         display: inline-grid;
         font-size: $font-size-sm;
         color:#396090;
+        height: 72px;
     }
     &__priсe {
         margin-top: 14%;
@@ -40,14 +41,11 @@
             font-size: $font-size-base * 1.2;
             font-weight: 600;
             color: #00316D;
+            height: 60px;
         }
     }
 
     @media screen and (max-width: $sm) {
-        &__title {
-            font-size: calc(4.5vw);
-        }
-
         button {
             span {
                 font-size: $font-size-base * .6;
