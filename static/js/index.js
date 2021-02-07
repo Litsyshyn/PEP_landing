@@ -260,36 +260,36 @@ $.ajax({
 
             <div class="payment-card__title">
                 <span lang="uk">
-                    Тривалість ${subscription.duration} днів. 
-                    <br>
-                        Максимальна кількість запитів:     
+                    <br>     
                         ${subscription.requests_limit}
-                    </br>
+                        API-запитів
+                    <br> 
+                        ${ !subscription.is_default ? ('Необмежено переглядів') : subscription.platform_requests_limit + ' Переглядів'}
                 </span>
                 <span lang="en">
-                    Duration ${subscription.duration} days. 
                     <br>
-                        Maximum number of requests:
                         ${requestsLimitEn}
-                    </br>
+                        API-requests
+                    <br>
+                        ${ !subscription.is_default ? ('Unlimited views') : subscription.platform_requests_limit + ' Views'}
                 </span>
             </div>
 
-                <div class="payment-card__priсe h1 payment-card__priсe_required">
-                    <div lang="uk">
-                        ${subscription.price}
-                        <span lang="uk">грн</span>
-                    </div>
-                    <div lang="en">
-                        ${subscriptionPriceEn}
-                        <span lang="en">UAH</span>
-                    </div>
+            <div class="payment-card__priсe h1 payment-card__priсe_required">
+                <div lang="uk">
+                    ${subscription.price}
+                    <span lang="uk">грн/міс</span>
                 </div>
+                <div lang="en">
+                    ${subscriptionPriceEn}
+                    <span lang="en">UAH/month</span>
+                </div>
+            </div>
 
-                <button type="button" class="btn-primary link-platform js-subscription-select" data-id="${subscription.id}">
-                    <span lang="uk">Обрати</span>
-                    <span lang="en">Choose</span>
-                </button>
+            <button type="button" class="btn-primary link-platform js-subscription-select" data-id="${subscription.id}">
+                <span lang="uk">Обрати</span>
+                <span lang="en">Choose</span>
+            </button>
             </div>
             `
             elements.push(html);
