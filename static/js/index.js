@@ -21,7 +21,7 @@ let langs = {
         uk: 'Замала кількість символів',
         en: 'Too few symbols',
     },
-    maxSymbols: { 
+    maxSymbols: {
         uk: 'Завелика кількість символів',
         en: 'Too many symbols',
     },
@@ -104,9 +104,9 @@ const getSchema = () => {
     }
 };
 
-function changeLang (languageCode) {  
+function changeLang (languageCode) {
     if (allowedLanguages.includes(languageCode)) {
-        window.localStorage.setItem('lang', languageCode); 
+        window.localStorage.setItem('lang', languageCode);
         $('#name')[0].placeholder = t('placeholderName');
         $('#surname')[0].placeholder = t('placeholderLastName');
         $('#question')[0].placeholder = t('placeholderQuestion');
@@ -128,7 +128,7 @@ $('#change-lang').click(function(event) {
     event.preventDefault();
     let langUser = 'uk';
     if (localStorage.getItem('lang') === 'uk') {
-        langUser = 'en'; 
+        langUser = 'en';
     }
     changeLang(langUser);
 });
@@ -136,10 +136,7 @@ $('#change-lang').click(function(event) {
 $(document).ready(() => {
     const langFromLocalStorage = localStorage.getItem('lang');
     const langFromUrl = new URLSearchParams(location.search).get('lang');
-    
-    if ( !langFromUrl ) {
-        return
-    }
+
     if (allowedLanguages.includes(langFromUrl)) {
         changeLang(langFromUrl);
     } else if (allowedLanguages.includes(langFromLocalStorage)) {
@@ -156,11 +153,11 @@ $('#contact-form').submit(function(event){
     if (!form.valid()) {
         return
     }
-    
+
     let data = {
         name: this.username.value + ' ' + this.surname.value,
         email: this.email.value,
-        subject: this.username.value + ' ' + this.surname.value, 
+        subject: this.username.value + ' ' + this.surname.value,
         message: this.question.value,
     }
 
@@ -188,19 +185,19 @@ $('#contact-form').submit(function(event){
 });
 
 $('.link-platform').on('click', function () {
-    window.open(process.env.DO_FRONTEND_HOST + '/system/home/?lang=' + localStorage.getItem('lang')); 
+    window.open(process.env.DO_FRONTEND_HOST + '/system/home/?lang=' + localStorage.getItem('lang'));
 });
 
 $('.link-landing').on('click', function () {
-    window.open('https://dataocean.us/?lang='+ localStorage.getItem('lang')); 
+    window.open('https://dataocean.us/?lang='+ localStorage.getItem('lang'));
 });
 
 $('.link-cpk').on('click', function () {
-    window.open('https://pep.org.ua/'+ localStorage.getItem('lang')); 
+    window.open('https://pep.org.ua/'+ localStorage.getItem('lang'));
 });
 
 $('#api-docs').on('click', function () {
-    window.open(process.env.DO_BACKEND_HOST + '/schema/redoc/'); 
+    window.open(process.env.DO_BACKEND_HOST + '/schema/redoc/');
 });
 
 
@@ -234,9 +231,9 @@ $('.menu-btn').on('click', function (event) {
 $.ajax({
     url: process.env.DO_BACKEND_HOST + '/api/payment/subscriptions/',
     type : 'get',
-    error: function() {
-        alert('ERROR.');
-    },
+    // error: function() {
+    //     alert('ERROR.');
+    // },
     success : function(data){
         let elements = [];
         const imgPay = [
@@ -298,11 +295,11 @@ $.ajax({
         $('#payment-box').html(elements)
 
         changeLang(window.localStorage.getItem('lang') || 'uk')
-        
+
         $('.js-subscription-select').on('click', function () {
             const subId = $(this).data('id')
             window.open(process.env.DO_FRONTEND_HOST + '/system/subscriptions/?lang=' +
-            localStorage.getItem('lang') + `&subscription=${subId}`); 
+            localStorage.getItem('lang') + `&subscription=${subId}`);
         });
     }
   });
