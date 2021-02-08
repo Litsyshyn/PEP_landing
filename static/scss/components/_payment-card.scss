@@ -46,6 +46,7 @@
     }
 
     @media screen and (max-width: $sm) {
+        max-width: 60%;
         button {
             span {
                 font-size: $font-size-base * .6;
@@ -84,4 +85,9 @@
     @media screen and (min-width: $xl) {
         flex-direction: row;
     }
+
+    @media screen and (max-width: $sm) {
+        align-items: center;
+    }
+
 }
