@@ -1,3 +1,4 @@
+import './scss/main.scss';
 import $ from 'jquery';
 import 'jquery-validation';
 import 'jquery-modal';
@@ -237,16 +238,16 @@ $.ajax({
     success : function(data){
         let elements = [];
         const imgPay = [
-            'static/img/icon_free.svg',
-            'static/img/icon_basic.svg',
-            'static/img/icon_premium.svg'
+            'img/icon_free.svg',
+            'img/icon_basic.svg',
+            'img/icon_premium.svg',
         ];
 
-            data.forEach (function(subscription, i) {
-            const requestsLimitEn = `${subscription.requests_limit.toLocaleString("en")}`;
-            const subscriptionPriceEn = `${subscription.price.toLocaleString("en")}`;
+        data.forEach (function(subscription, i) {
+        const requestsLimitEn = `${subscription.requests_limit.toLocaleString("en")}`;
+        const subscriptionPriceEn = `${subscription.price.toLocaleString("en")}`;
 
-            let html = `
+        let html = `
             <div class="payment-card">
 
             <img src="${imgPay[i]}" alt='tarif_logo'></img>

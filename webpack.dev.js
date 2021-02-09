@@ -7,5 +7,12 @@ module.exports = merge(common, {
   watchOptions: {
     poll: true,
   },
-  devtool: 'source-map',
+
+  devtool: 'inline-source-map',
+
+  devServer: {
+    port: 7000,
+    hot: true,
+    open: true,
+  }
 });

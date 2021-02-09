@@ -1,9 +1,9 @@
-For development
+## Development
 
-clone repo to local
-go to project root directory
-create .env.local file
-override .env variables in .env.local for your environment
-run npm install
-run npm start
-start hacking
+```shell script
+git clone <link to my fork>
+cd PEP_landing
+cp .env.example .env
+npm install
+npm start
+```

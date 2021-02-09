@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/webpack --config webpack.prod.js",
-    "watch": "NODE_ENV=development ./node_modules/.bin/webpack --config webpack.dev.js --watch",
-    "start": "NODE_ENV=development ./node_modules/.bin/webpack serve --config webpack.dev.js --hot"
+    "build": "webpack --config webpack.prod.js",
+    "watch": "webpack --config webpack.dev.js --watch",
+    "start": "webpack serve  --config=webpack.dev.js"
   },
   "browserslist": [
     "> 1%",
@@ -29,9 +29,11 @@
     "autoprefixer": "^10.1.0",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^7.0.0",
     "css-loader": "^5.0.1",
     "dotenv-webpack": "^6.0.0",
     "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.0.0",
     "mini-css-extract-plugin": "^1.3.3",
     "postcss-loader": "^4.1.0",
     "sass": "^1.30.0",
