@@ -215,7 +215,7 @@
                         <h1 lang="uk">Ціна договірна</h1>
                         <h1 lang="en">Contact support <br>for a price</h1>
                     </div>
-                    <button id="button-form" onclick="window.open('mailto:info@dataocean.us')" class="btn-primary">
+                    <button id="open-payform" class="btn-primary">
                         <span lang="uk">Обрати</span>
                         <span lang="en">Choose</span>
                     </button>
@@ -346,6 +346,48 @@
             </div>
         </div>
     </footer>
+
+    <div class="open-payform">
+        <form class="form__row" id="pay-form">
+            <div class="payform-group">
+                <img id="payform-close" src="img/close.svg" href="#close-modal" rel="modal:close" class="close-modal">
+
+                <label for="username_pay" class="payform-group__label payform-group__label_required">
+                    <span lang="uk">Ім’я</span>
+                    <span lang="en">First Name</span>
+                </label>
+                <input type="text" name="username_pay" id="username_pay" required class="input" minlength="2">
+
+                <label for="surname_pay" class="payform-group__label payform-group__label_required">
+                    <span lang="uk">Прізвище</span>
+                    <span lang="en">Last Name</span>
+                </label>
+                <input type="text" name="surname_pay" id="surname_pay" required class="input" minlength="2">
+
+                <label for="email_pay" class="payform-group__label payform-group__label_required">
+                    <span lang="uk">Пошта</span>
+                    <span lang="en">Email</span>
+                </label>
+                <input type="email" name="email_pay" required class="input" id="email_pay" placeholder="user@email.com">
+
+                <label for="phone_pay" class="payform-group__label">
+                    <span lang="uk">Телефон</span>
+                    <span lang="en">Phone</span>
+                </label>
+                <input type="phone" name="phone_pay" class="input" id="phone_pay">
+
+                <label for="question_pay" class="payform-group__label">
+                    <span lang="uk">Повідомлення</span>
+                    <span lang="en">Your message</span>
+                </label>
+                <textarea class="input input_large" rows="4" name="question_pay" id="question_pay"></textarea>
+            </div>
+            <button id="pay-submit" class="btn-primary btn-primary_submit" type="submit">
+                <span lang="uk">Надіслати</span>
+                <span lang="en">Submit</span>
+            </button>
+        </form>
+    </div> 
 </body>
 </html>
 
