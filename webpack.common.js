@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const Dotenv = require('dotenv-webpack');
@@ -14,6 +13,12 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: "[name].[contenthash].bundle.js",
+    publicPath: '',
+  },
+  resolve: {
+    alias: {
+      src: path.resolve(__dirname, 'src'),
+    }
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -50,55 +55,23 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          { loader: MiniCssExtractPlugin.loader },
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-                plugins: [
-                  autoprefixer(),
-                ]
-              }
-            }
-          }
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
         ]
       },
       {
         test: /\.s[ac]ss$/i,
         use: [
-          { loader: MiniCssExtractPlugin.loader },
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-              import: true
-            }
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-                plugins: [
-                  autoprefixer(),
-                ]
-              }
-            }
-          },
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
           'sass-loader',
         ],
       },
       {
         test: /\.(png|woff|woff2|svg|eot|ttf|gif|jpe?g)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 1000,
-              name: '[path][name].[md5:hash:hex:12].[ext]',
-            },
-          },
-        ],
+        use: ['file-loader'],
       },
     ],
   },
