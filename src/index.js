@@ -260,8 +260,8 @@ $.ajax({
         ];
 
         data.forEach (function(subscription, i) {
-        const requestsLimitEn = `${subscription.requests_limit.toLocaleString("en")}`;
-        const subscriptionPriceEn = `${subscription.price.toLocaleString("en")}`;
+        const requestsLimitEn = subscription.requests_limit.toLocaleString("en");
+        const subscriptionPriceEn = subscription.price.toLocaleString("en");
 
         let html = `
             <div class="payment-card">
