@@ -1,81 +1,22 @@
 import './scss/main.scss';
+import { allowedLanguages, t, changeLang, onChangeLang } from './localization';
 import $ from 'jquery';
 import 'jquery-validation';
 import 'jquery-modal';
 
-const allowedLanguages = ['uk', 'en'];
+onChangeLang( (LangCode) => {
+    $('#username')[0].placeholder = t('placeholderName');
+    $('#surname')[0].placeholder = t('placeholderLastName');
+    $('#question')[0].placeholder = t('placeholderQuestion');
+    
+    $('#username_pay')[0].placeholder = t('placeholderName');
+    $('#surname_pay')[0].placeholder = t('placeholderLastName');
+    $('#question_pay')[0].placeholder = t('placeholderPayNote');
+})
 
-let langs = {
-    messageSuccess: {
-        uk: 'Дякуємо за звернення! Постараємося відповісти якнайшвидше.',
-        en: 'Thank you for contacting us! We will get back to you soon.',
-    },
-    messageError: {
-        uk: 'Помилка. Дані не відправлені',
-        en: 'Error. Data isn\'t sent',
-    },
-    messageErrorUnknown: {
-        uk: 'Невідома помилка: ',
-        en: 'Unknown error: ',
-    },
-    minSymbols: {
-        uk: 'Замала кількість символів',
-        en: 'Too few symbols',
-    },
-    maxSymbols: {
-        uk: 'Завелика кількість символів',
-        en: 'Too many symbols',
-    },
-    usernameRequired: {
-        uk: 'Будь ласка, введіть Ваше ім\'я',
-        en: 'Enter your First Name, please',
-    },
-    surnameRequired: {
-        uk: 'Будь ласка, введіть Ваше прізвище',
-        en: 'Enter your Last Name, please',
-    },
-    emailRequired: {
-        uk: 'Будь ласка, введіть адресу',
-        en: 'Enter your email, please',
-    },
-    emailCorrect: {
-        uk: 'Будь ласка, введіть коректно адресу',
-        en: 'Enter your correct email, please',
-    },
-    questionAsk: {
-        uk: 'Будь ласка, поставте своє запитання',
-        en: 'Ask us your question, please',
-    },
-    placeholderName: {
-        uk: 'Петро',
-        en: 'John',
-    },
-    placeholderLastName: {
-        uk: 'Іваненко',
-        en: 'Galt',
-    },
-    placeholderQuestion: {
-        uk: 'Текст повідомлення',
-        en: 'Your message'
-    },
-    placeholderPayNote: {
-        uk: 'Ваші пропозиції щодо умов співпраці',
-        en: 'Your suggestions on the terms of cooperation',
-    },
-    note: {
-        uk: 'Примітка',
-        en: 'Note'
-    },
-    nomark: {
-        uk: 'Примітка відстуня',
-        en: 'No mark'
-    }
-};
-
-const t = (key) => {
-    let currentLang = localStorage.getItem('lang');
-    return langs[key][currentLang];
-};
+$.validator.methods.email = function(value, element) {
+    return this.optional(element) || /[a-z]+@[a-z]+\.[a-z]+/.test(value);
+}
 
 const getSchema = () => {
     return {
@@ -116,52 +57,6 @@ const getSchema = () => {
         }
     }
 };
-
-function changeLang (languageCode) {
-    if (allowedLanguages.includes(languageCode)) {
-        window.localStorage.setItem('lang', languageCode);
-        $('#name')[0].placeholder = t('placeholderName');
-        $('#surname')[0].placeholder = t('placeholderLastName');
-        $('#question')[0].placeholder = t('placeholderQuestion');
-        
-        $('#username_pay')[0].placeholder = t('placeholderName');
-        $('#surname_pay')[0].placeholder = t('placeholderLastName');
-        $('#question_pay')[0].placeholder = t('placeholderPayNote');
-        $("[lang]").each(function () {
-            if ($(this).attr("lang") === languageCode) {
-                $(this).show();
-            }
-            else {
-                $(this).hide();
-            }
-        });
-    } else {
-        changeLang('uk');
-        throw new Error("LangCode " + languageCode + " not supported");
-    }
-}
-
-$('#change-lang').click(function(event) {
-    event.preventDefault();
-    let langUser = 'uk';
-    if (localStorage.getItem('lang') === 'uk') {
-        langUser = 'en';
-    }
-    changeLang(langUser);
-});
-
-$(document).ready(() => {
-    const langFromLocalStorage = localStorage.getItem('lang');
-    const langFromUrl = new URLSearchParams(location.search).get('lang');
-
-    if (allowedLanguages.includes(langFromUrl)) {
-        changeLang(langFromUrl);
-    } else if (allowedLanguages.includes(langFromLocalStorage)) {
-        changeLang(langFromLocalStorage);
-    } else {
-        changeLang('uk');
-    }
-});
 
 $('#contact-form').submit(function(event){
     event.preventDefault();
@@ -216,7 +111,6 @@ $('.link-cpk').on('click', function () {
 $('#api-docs').on('click', function () {
     window.open(process.env.DO_BACKEND_HOST + '/schema/redoc/');
 });
-
 
 $('.terms_and_conditions').on('click', function () {
     if (localStorage.getItem('lang') === 'uk') {
@@ -359,7 +253,7 @@ $.ajax({
 
 const getPaySchema = () => {
     return {
-        errorClass: "input_error",
+        errorClass: "input_error_pay",
         rules: {
             username_pay: {
                 required: true,
@@ -380,7 +274,7 @@ const getPaySchema = () => {
                 minlength: t('minSymbols'),
             },
             surname_pay: {
-                required: t('usernameRequired'),
+                required: t('surnameRequired'),
                 minlength: t('minSymbols'),
             },
             email_pay: {

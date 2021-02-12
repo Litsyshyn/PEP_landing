@@ -10,7 +10,10 @@ const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
-  entry: './index.js',
+  entry: {
+    main: './index.js',
+    error: './errorScripts.js',
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: "[name].[contenthash].bundle.js",
@@ -18,7 +21,7 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].bundle.css',
-      chunkFilename: '[id].[contenthash].bundle.css'
+      chunkFilename: '[id].[contenthash].bundle.css',
     }),
     new CleanWebpackPlugin({
       cleanStaleWebpackAssets: false,
@@ -27,6 +30,18 @@ module.exports = {
     new Dotenv(),
     new HtmlWebpackPlugin({
       template: './index.html',
+      filename: "index.html",
+      chunks: ['main'],
+    }),
+    new HtmlWebpackPlugin({
+      template: './404.html',
+      filename: "404.html",
+      chunks: ['error'],
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: "./.htaccess", to: path.resolve(__dirname, 'dist') },
+      ],
     }),
     new CopyPlugin({
       patterns: [
