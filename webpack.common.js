@@ -40,12 +40,8 @@ module.exports = {
     }),
     new CopyPlugin({
       patterns: [
-        { from: "./.htaccess", to: path.resolve(__dirname, 'dist') },
-      ],
-    }),
-    new CopyPlugin({
-      patterns: [
         { from: "./img", to: path.resolve(__dirname, 'dist/img') },
+        { from: "./.htaccess", to: path.resolve(__dirname, 'dist') },
       ],
     }),
   ],
