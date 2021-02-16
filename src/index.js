@@ -1,68 +1,22 @@
+import './scss/main.scss';
+import { allowedLanguages, t, changeLang, onChangeLang } from './localization';
 import $ from 'jquery';
 import 'jquery-validation';
 import 'jquery-modal';
 
-const allowedLanguages = ['uk', 'en'];
+onChangeLang( (LangCode) => {
+    $('#username')[0].placeholder = t('placeholderName');
+    $('#surname')[0].placeholder = t('placeholderLastName');
+    $('#question')[0].placeholder = t('placeholderQuestion');
+    
+    $('#username_pay')[0].placeholder = t('placeholderName');
+    $('#surname_pay')[0].placeholder = t('placeholderLastName');
+    $('#question_pay')[0].placeholder = t('placeholderPayNote');
+})
 
-let langs = {
-    messageSuccess: {
-        uk: 'Дякуємо за звернення! Постараємося відповісти якнайшвидше.',
-        en: 'Thank you for contacting us! We will get back to you soon.',
-    },
-    messageError: {
-        uk: 'Помилка. Дані не відправлені',
-        en: 'Error. Data isn\'t sent',
-    },
-    messageErrorUnknown: {
-        uk: 'Невідома помилка: ',
-        en: 'Unknown error: ',
-    },
-    minSymbols: {
-        uk: 'Замала кількість символів',
-        en: 'Too few symbols',
-    },
-    maxSymbols: { 
-        uk: 'Завелика кількість символів',
-        en: 'Too many symbols',
-    },
-    usernameRequired: {
-        uk: 'Будь ласка, введіть Ваше ім\'я',
-        en: 'Enter your First Name, please',
-    },
-    surnameRequired: {
-        uk: 'Будь ласка, введіть Ваше прізвище',
-        en: 'Enter your Last Name, please',
-    },
-    emailRequired: {
-        uk: 'Будь ласка, введіть адресу',
-        en: 'Enter your email, please',
-    },
-    emailCorrect: {
-        uk: 'Будь ласка, введіть коректно адресу',
-        en: 'Enter your correct email, please',
-    },
-    questionAsk: {
-        uk: 'Будь ласка, поставте своє запитання',
-        en: 'Ask us your question, please',
-    },
-    placeholderName: {
-        uk: 'Петро',
-        en: 'John',
-    },
-    placeholderLastName: {
-        uk: 'Іваненко',
-        en: 'Galt',
-    },
-    placeholderQuestion: {
-        uk: 'Текст повідомлення',
-        en: 'Your message'
-    },
-};
-
-const t = (key) => {
-    let currentLang = localStorage.getItem('lang');
-    return langs[key][currentLang];
-};
+$.validator.methods.email = function(value, element) {
+    return this.optional(element) || /[a-z]+@[a-z]+\.[a-z]+/.test(value);
+}
 
 const getSchema = () => {
     return {
@@ -104,51 +58,6 @@ const getSchema = () => {
     }
 };
 
-function changeLang (languageCode) {  
-    if (allowedLanguages.includes(languageCode)) {
-        window.localStorage.setItem('lang', languageCode); 
-        $('#name')[0].placeholder = t('placeholderName');
-        $('#surname')[0].placeholder = t('placeholderLastName');
-        $('#question')[0].placeholder = t('placeholderQuestion');
-        $("[lang]").each(function () {
-            if ($(this).attr("lang") === languageCode) {
-                $(this).show();
-            }
-            else {
-                $(this).hide();
-            }
-        });
-    } else {
-        changeLang('uk');
-        throw new Error("LangCode " + languageCode + " not supported");
-    }
-}
-
-$('#change-lang').click(function(event) {
-    event.preventDefault();
-    let langUser = 'uk';
-    if (localStorage.getItem('lang') === 'uk') {
-        langUser = 'en'; 
-    }
-    changeLang(langUser);
-});
-
-$(document).ready(() => {
-    const langFromLocalStorage = localStorage.getItem('lang');
-    const langFromUrl = new URLSearchParams(location.search).get('lang');
-    
-    if ( !langFromUrl ) {
-        return
-    }
-    if (allowedLanguages.includes(langFromUrl)) {
-        changeLang(langFromUrl);
-    } else if (allowedLanguages.includes(langFromLocalStorage)) {
-        changeLang(langFromLocalStorage);
-    } else {
-        changeLang('uk');
-    }
-});
-
 $('#contact-form').submit(function(event){
     event.preventDefault();
     let form = $(this);
@@ -156,11 +65,11 @@ $('#contact-form').submit(function(event){
     if (!form.valid()) {
         return
     }
-    
+
     let data = {
         name: this.username.value + ' ' + this.surname.value,
         email: this.email.value,
-        subject: this.username.value + ' ' + this.surname.value, 
+        subject: this.username.value + ' ' + this.surname.value,
         message: this.question.value,
     }
 
@@ -188,21 +97,20 @@ $('#contact-form').submit(function(event){
 });
 
 $('.link-platform').on('click', function () {
-    window.open(process.env.DO_FRONTEND_HOST + '/system/home/?lang=' + localStorage.getItem('lang')); 
+    window.open(process.env.DO_FRONTEND_HOST + '/system/home/?lang=' + localStorage.getItem('lang'));
 });
 
 $('.link-landing').on('click', function () {
-    window.open('https://dataocean.us/?lang='+ localStorage.getItem('lang')); 
+    window.open('https://dataocean.us/?lang='+ localStorage.getItem('lang'));
 });
 
 $('.link-cpk').on('click', function () {
-    window.open('https://pep.org.ua/'+ localStorage.getItem('lang')); 
+    window.open('https://pep.org.ua/'+ localStorage.getItem('lang'));
 });
 
 $('#api-docs').on('click', function () {
-    window.open(process.env.DO_BACKEND_HOST + '/schema/redoc/'); 
+    window.open(process.env.DO_BACKEND_HOST + '/schema/redoc/');
 });
-
 
 $('.terms_and_conditions').on('click', function () {
     if (localStorage.getItem('lang') === 'uk') {
@@ -234,22 +142,22 @@ $('.menu-btn').on('click', function (event) {
 $.ajax({
     url: process.env.DO_BACKEND_HOST + '/api/payment/subscriptions/',
     type : 'get',
-    error: function() {
-        alert('ERROR.');
-    },
+    // error: function() {
+    //     alert('ERROR.');
+    // },
     success : function(data){
         let elements = [];
         const imgPay = [
-            'static/img/icon_free.svg',
-            'static/img/icon_basic.svg',
-            'static/img/icon_premium.svg'
+            'img/icon_free.svg',
+            'img/icon_basic.svg',
+            'img/icon_premium.svg',
         ];
 
-            data.forEach (function(subscription, i) {
-            const requestsLimitEn = `${subscription.requests_limit.toLocaleString("en")}`;
-            const subscriptionPriceEn = `${subscription.price.toLocaleString("en")}`;
+        data.forEach (function(subscription, i) {
+        const requestsLimitEn = subscription.requests_limit.toLocaleString("en");
+        const subscriptionPriceEn = subscription.price.toLocaleString("en");
 
-            let html = `
+        let html = `
             <div class="payment-card">
 
             <img src="${imgPay[i]}" alt='tarif_logo'></img>
@@ -260,36 +168,36 @@ $.ajax({
 
             <div class="payment-card__title">
                 <span lang="uk">
-                    Тривалість ${subscription.duration} днів. 
-                    <br>
-                        Максимальна кількість запитів:     
+                    <br>     
                         ${subscription.requests_limit}
-                    </br>
+                        API-запитів
+                    <br> 
+                        ${ !subscription.is_default ? ('Необмежено переглядів') : subscription.platform_requests_limit + ' Переглядів'}
                 </span>
                 <span lang="en">
-                    Duration ${subscription.duration} days. 
                     <br>
-                        Maximum number of requests:
                         ${requestsLimitEn}
-                    </br>
+                        API-requests
+                    <br>
+                        ${ !subscription.is_default ? ('Unlimited views') : subscription.platform_requests_limit + ' Views'}
                 </span>
             </div>
 
-                <div class="payment-card__priсe h1 payment-card__priсe_required">
-                    <div lang="uk">
-                        ${subscription.price}
-                        <span lang="uk">грн</span>
-                    </div>
-                    <div lang="en">
-                        ${subscriptionPriceEn}
-                        <span lang="en">UAH</span>
-                    </div>
+            <div class="payment-card__priсe h1 payment-card__priсe_required">
+                <div lang="uk">
+                    ${subscription.price}
+                    <span lang="uk">грн/міс</span>
                 </div>
+                <div lang="en">
+                    ${subscriptionPriceEn}
+                    <span lang="en">UAH/month</span>
+                </div>
+            </div>
 
-                <button type="button" class="btn-primary link-platform js-subscription-select" data-id="${subscription.id}">
-                    <span lang="uk">Обрати</span>
-                    <span lang="en">Choose</span>
-                </button>
+            <button type="button" class="btn-primary link-platform js-subscription-select" data-id="${subscription.id}">
+                <span lang="uk">Обрати</span>
+                <span lang="en">Choose</span>
+            </button>
             </div>
             `
             elements.push(html);
@@ -298,11 +206,11 @@ $.ajax({
         $('#payment-box').html(elements)
 
         changeLang(window.localStorage.getItem('lang') || 'uk')
-        
+
         $('.js-subscription-select').on('click', function () {
             const subId = $(this).data('id')
             window.open(process.env.DO_FRONTEND_HOST + '/system/subscriptions/?lang=' +
-            localStorage.getItem('lang') + `&subscription=${subId}`); 
+            localStorage.getItem('lang') + `&subscription=${subId}`);
         });
     }
   });
@@ -341,4 +249,83 @@ $.ajax({
     success: function(data) {
         $('#pep-categories').html(data.business_pep_relations_count + data.personal_pep_relations_count + data.family_pep_relations_count);
     }
+});
+
+const getPaySchema = () => {
+    return {
+        errorClass: "input_error_pay",
+        rules: {
+            username_pay: {
+                required: true,
+                minlength: 2,
+            },
+            surname_pay: {
+                required: true,
+                minlength: 2,
+            },
+            email_pay: {
+                required: true,
+                email: true,
+            }
+        },
+        messages: {
+            username_pay: {
+                required: t('usernameRequired'),
+                minlength: t('minSymbols'),
+            },
+            surname_pay: {
+                required: t('surnameRequired'),
+                minlength: t('minSymbols'),
+            },
+            email_pay: {
+                required: t('emailRequired'),
+                email: t('emailCorrect'),
+            }
+        }
+    }
+};
+
+$('#open-payform').on('click', function () {
+    $('.open-payform').fadeToggle();
+});
+
+$('#pay-form').submit(function(event){
+    event.preventDefault();
+    let payForm = $(this);
+    payForm.validate(getPaySchema())
+    if (!payForm.valid()) {
+        return
+    }
+    let payData = {
+        name: this.username_pay.value + ' ' + this.surname_pay.value,
+        email: this.email_pay.value,
+        subject: this.username_pay.value + ' ' + this.phone_pay.value, 
+        message: this.question_pay.value ?  t('note') + ': ' + this.question_pay.value : t('nomark'),
+    }
+    $('.open-payform').fadeOut();
+    $.ajax({
+        url: process.env.DO_BACKEND_HOST + '/api/landing_mail/',
+        type: "POST",
+        dataType: "json",
+        data: payData,
+        success: function(data, status, xhr) {
+            if (xhr.status !== 200) {
+                return
+            }
+            alert(t('messageSuccess'));
+            payForm[0].reset();
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            if (jqXhr.status === 400 || jqXhr.status === 503) {
+                alert(t('messageError'));
+            }
+            else {
+                alert(t('messageErrorUnknown') + errorMessage);
+            }
+        }
+    })
+});
+
+$('#payform-close').on('click', function () {
+    $('.open-payform').fadeOut();
 });

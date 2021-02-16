@@ -3,9 +3,16 @@ const common = require('./webpack.common');
 
 module.exports = merge(common, {
   mode: 'development',
-  watch: true,
+
   watchOptions: {
     poll: true,
   },
-  devtool: 'source-map',
+
+  devtool: 'inline-source-map',
+
+  devServer: {
+    port: 7000,
+    hot: true,
+    open: true,
+  }
 });
