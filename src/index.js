@@ -19,11 +19,9 @@ $.validator.methods.email = function(value, element) {
 }
 
 $(document).ajaxError(function (e, jqXHR, ajaxSettings, thrownError) {
-    if (Math.trunc(jqXHR.status/100) === 5 || jqXHR.status === 0 || exception === 'timeout' || exception === 'abort')
-    {
+    if (Math.trunc(jqXHR.status/100) === 5 || jqXHR.status === 0) {
         location.replace('./500.html');
-    } else
-    {
+    } else {
         alert(`${t('messageError \n')} ${thrownError}`);
     }
 });
@@ -111,7 +109,7 @@ $('.link-platform').on('click', function () {
 });
 
 $('.link-landing').on('click', function () {
-    window.open(`https://dataocean.us/?lang=${localStorage.getItem('lang')}`);
+    window.open(`${process.env.DO_MAIN_LANDING}?lang=${localStorage.getItem('lang')}`);
 });
 
 $('.link-cpk').on('click', function () {
@@ -308,7 +306,7 @@ $('#pay-form').on('submit', function(event){
         last_name: this.surname_pay.value,
         email: this.email_pay.value,
         phone: this.phone_pay.value, 
-        note: this.question_pay.value ?  t('note') + ': ' + this.question_pay.value : t('nomark'),
+        note: this.question_pay.value,
     }
     
     $('.open-payform').fadeOut();
