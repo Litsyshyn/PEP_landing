@@ -23,6 +23,25 @@
     }
 }
 
+.error_block {
+    margin-top: 7%;
+
+    img {
+        max-width: 100%;
+    }
+
+    &_500 {
+        color: #00316D;
+
+        a {
+            text-decoration: none;
+        }
+        .error_title {
+            margin: 10% 0;
+        }
+    }
+}
+
 .error_number {
     font-size: 70px;
     font-weight: 700;
