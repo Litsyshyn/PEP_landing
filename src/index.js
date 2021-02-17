@@ -18,6 +18,14 @@ $.validator.methods.email = function(value, element) {
     return this.optional(element) || /[a-z]+@[a-z]+\.[a-z]+/.test(value);
 }
 
+$(document).ajaxError(function (e, jqXHR, ajaxSettings, thrownError) {
+    if (Math.trunc(jqXHR.status/100) === 5 || jqXHR.status === 0) {
+        location.replace('./500.html');
+    } else {
+        alert(`${t('messageError \n')} ${thrownError}`);
+    }
+});
+
 const getSchema = () => {
     return {
         errorClass: "input_error",
@@ -33,6 +41,10 @@ const getSchema = () => {
             email: {
                 required: true,
                 email: true,
+            },
+            phone: {
+                minlength: 2,
+                maxlength: 15,
             },
             question: {
                 required: true,
@@ -51,6 +63,10 @@ const getSchema = () => {
                 required: t('emailRequired'),
                 email: t('emailCorrect'),
             },
+            phone: {
+                minlength: t('minSymbols'),
+                maxlength: t('maxSymbols'),
+            },
             question: {
                 required: t('questionAsk'),
             }
@@ -58,7 +74,7 @@ const getSchema = () => {
     }
 };
 
-$('#contact-form').submit(function(event){
+$('#contact-form').on('submit', function(event){
     event.preventDefault();
     let form = $(this);
     form.validate(getSchema())
@@ -67,14 +83,14 @@ $('#contact-form').submit(function(event){
     }
 
     let data = {
-        name: this.username.value + ' ' + this.surname.value,
+        name: `${this.username.value} ${this.surname.value}`,
         email: this.email.value,
-        subject: this.username.value + ' ' + this.surname.value,
+        subject: `${this.username.value} ${this.surname.value}`,
         message: this.question.value,
     }
 
     $.ajax({
-        url: process.env.DO_BACKEND_HOST + '/api/landing_mail/',
+        url: `${process.env.DO_BACKEND_HOST}/api/landing_mail/`,
         type: "POST",
         dataType: "json",
         data: data,
@@ -84,47 +100,39 @@ $('#contact-form').submit(function(event){
             }
             alert(t('messageSuccess'));
             form[0].reset();
-        },
-        error: function (jqXhr, textStatus, errorMessage) {
-            if (jqXhr.status === 400 || jqXhr.status === 503) {
-                alert(t('messageError'));
-            }
-            else {
-                alert(t('messageErrorUnknown') + errorMessage);
-            }
         }
     })
 });
 
 $('.link-platform').on('click', function () {
-    window.open(process.env.DO_FRONTEND_HOST + '/system/home/?lang=' + localStorage.getItem('lang'));
+    window.open(`${process.env.DO_FRONTEND_HOST}/system/home/?lang=${localStorage.getItem('lang')}`);
 });
 
 $('.link-landing').on('click', function () {
-    window.open('https://dataocean.us/?lang='+ localStorage.getItem('lang'));
+    window.open(`${process.env.DO_MAIN_LANDING}?lang=${localStorage.getItem('lang')}`);
 });
 
 $('.link-cpk').on('click', function () {
-    window.open('https://pep.org.ua/'+ localStorage.getItem('lang'));
+    window.open(`https://pep.org.ua/${localStorage.getItem('lang')}`);
 });
 
 $('#api-docs').on('click', function () {
-    window.open(process.env.DO_BACKEND_HOST + '/schema/redoc/');
+    window.open(`${process.env.DO_BACKEND_HOST}/schema/redoc/`);
 });
 
 $('.terms_and_conditions').on('click', function () {
     if (localStorage.getItem('lang') === 'uk') {
-        window.location.assign(process.env.DO_FRONTEND_HOST + '/docs/TermsAndConditionsUk.html');
+        window.location.assign(`${process.env.DO_FRONTEND_HOST}/docs/TermsAndConditionsUk.html`);
     } else {
-        window.location.assign(process.env.DO_FRONTEND_HOST + '/docs/TermsAndConditionsEn.html');
+        window.location.assign(`${process.env.DO_FRONTEND_HOST}/docs/TermsAndConditionsEn.html`);
     }
 });
 
 $('.privacy_policy').on('click', function () {
     if (localStorage.getItem('lang') === 'uk') {
-        window.open(process.env.DO_FRONTEND_HOST + '/docs/PrivacyPolicyUk.html');
+        window.open(`${process.env.DO_FRONTEND_HOST}/docs/PrivacyPolicyUk.html`);
     } else {
-        window.open(process.env.DO_FRONTEND_HOST + '/docs/PrivacyPolicyEn.html');
+        window.open(`${process.env.DO_FRONTEND_HOST}/docs/PrivacyPolicyEn.html`);
     }
 });
 
@@ -140,11 +148,7 @@ $('.menu-btn').on('click', function (event) {
 });
 
 $.ajax({
-    url: process.env.DO_BACKEND_HOST + '/api/payment/subscriptions/',
-    type : 'get',
-    // error: function() {
-    //     alert('ERROR.');
-    // },
+    url: `${process.env.DO_BACKEND_HOST}/api/payment/subscriptions/`,
     success : function(data){
         let elements = [];
         const imgPay = [
@@ -209,46 +213,37 @@ $.ajax({
 
         $('.js-subscription-select').on('click', function () {
             const subId = $(this).data('id')
-            window.open(process.env.DO_FRONTEND_HOST + '/system/subscriptions/?lang=' +
-            localStorage.getItem('lang') + `&subscription=${subId}`);
+            window.open(`${process.env.DO_FRONTEND_HOST}/system/subscriptions/?lang=${localStorage.getItem('lang')}&subscription=${subId}`);
         });
     }
-  });
+});
 
 $.ajax({
-    type: 'GET',
-    url: process.env.DO_BACKEND_HOST + '/api/stats/count-peps/',
-    dataType: 'JSON',
+    url: `${process.env.DO_BACKEND_HOST}/api/stats/count-peps/`,
     success: function(data) {
         $('#peps').html(data.peps_count);
     },
 });
 
 $.ajax({
-    type: 'GET',
-    url: process.env.DO_BACKEND_HOST + '/api/stats/count-pep-related-persons/',
-    dataType: 'JSON',
+    url: `${process.env.DO_BACKEND_HOST}/api/stats/count-pep-related-persons/`,
     success: function(data) {
         $('#pep-rp').html(data.pep_related_persons_count);
     },
 });
 
 $.ajax({
-    type: 'GET',
-    url: process.env.DO_BACKEND_HOST + '/api/stats/count-pep-related-companies/',
-    dataType: 'JSON',
+    url: `${process.env.DO_BACKEND_HOST}/api/stats/count-pep-related-companies/`,
     success: function(data) {
         $('#pep-rc').html(data.pep_related_companies_count);
-    }
+    },
 });
 
 $.ajax({
-    type: 'GET',
-    url: process.env.DO_BACKEND_HOST + '/api/stats/count-pep-relation-categories/',
-    dataType: 'JSON',
+    url: `${process.env.DO_BACKEND_HOST}/api/stats/count-pep-relation-categories/`,
     success: function(data) {
         $('#pep-categories').html(data.business_pep_relations_count + data.personal_pep_relations_count + data.family_pep_relations_count);
-    }
+    },
 });
 
 const getPaySchema = () => {
@@ -262,6 +257,10 @@ const getPaySchema = () => {
             surname_pay: {
                 required: true,
                 minlength: 2,
+            },
+            phone: {
+                minlength: 2,
+                maxlength: 15,
             },
             email_pay: {
                 required: true,
@@ -277,6 +276,10 @@ const getPaySchema = () => {
                 required: t('surnameRequired'),
                 minlength: t('minSymbols'),
             },
+            phone_pay: {
+                minlength: t('minSymbols'),
+                maxlength: t('maxSymbols'),
+            },
             email_pay: {
                 required: t('emailRequired'),
                 email: t('emailCorrect'),
@@ -289,40 +292,36 @@ $('#open-payform').on('click', function () {
     $('.open-payform').fadeToggle();
 });
 
-$('#pay-form').submit(function(event){
+$('#pay-form').on('submit', function(event){
     event.preventDefault();
     let payForm = $(this);
     payForm.validate(getPaySchema())
+    
     if (!payForm.valid()) {
         return
     }
+    
     let payData = {
-        name: this.username_pay.value + ' ' + this.surname_pay.value,
+        first_name: this.username_pay.value,
+        last_name: this.surname_pay.value,
         email: this.email_pay.value,
-        subject: this.username_pay.value + ' ' + this.phone_pay.value, 
-        message: this.question_pay.value ?  t('note') + ': ' + this.question_pay.value : t('nomark'),
+        phone: this.phone_pay.value, 
+        note: this.question_pay.value,
     }
+    
     $('.open-payform').fadeOut();
+    
     $.ajax({
-        url: process.env.DO_BACKEND_HOST + '/api/landing_mail/',
+        url: `${process.env.DO_BACKEND_HOST}/api/payment/custom-subscription-request/create/`,
         type: "POST",
         dataType: "json",
         data: payData,
         success: function(data, status, xhr) {
-            if (xhr.status !== 200) {
-                return
+            if (xhr.status === 201) {
+                alert(t('messageSuccess'));
             }
-            alert(t('messageSuccess'));
             payForm[0].reset();
         },
-        error: function (jqXhr, textStatus, errorMessage) {
-            if (jqXhr.status === 400 || jqXhr.status === 503) {
-                alert(t('messageError'));
-            }
-            else {
-                alert(t('messageErrorUnknown') + errorMessage);
-            }
-        }
     })
 });
 

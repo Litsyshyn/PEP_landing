@@ -57,14 +57,6 @@ let langs = {
         uk: 'Ваші пропозиції щодо умов співпраці',
         en: 'Your suggestions on the terms of cooperation',
     },
-    note: {
-        uk: 'Примітка',
-        en: 'Note'
-    },
-    nomark: {
-        uk: 'Примітка відстуня',
-        en: 'No mark'
-    }
 };
 
 export const t = (key) => {
