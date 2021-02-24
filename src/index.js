@@ -221,28 +221,30 @@ $.ajax({
 $.ajax({
     url: `${process.env.DO_BACKEND_HOST}/api/stats/count-peps/`,
     success: function(data) {
-        $('#peps').html(data.peps_count);
+        $('#peps').html(data.peps_count.toLocaleString('en'));
     },
 });
 
 $.ajax({
     url: `${process.env.DO_BACKEND_HOST}/api/stats/count-pep-related-persons/`,
     success: function(data) {
-        $('#pep-rp').html(data.pep_related_persons_count);
+        $('#pep-rp').html(data.pep_related_persons_count.toLocaleString('en'));
     },
 });
 
 $.ajax({
     url: `${process.env.DO_BACKEND_HOST}/api/stats/count-pep-related-companies/`,
     success: function(data) {
-        $('#pep-rc').html(data.pep_related_companies_count);
+        $('#pep-rc').html(data.pep_related_companies_count.toLocaleString('en'));
     },
 });
 
 $.ajax({
     url: `${process.env.DO_BACKEND_HOST}/api/stats/count-pep-relation-categories/`,
     success: function(data) {
-        $('#pep-categories').html(data.business_pep_relations_count + data.personal_pep_relations_count + data.family_pep_relations_count);
+        $('#pep-categories').html(
+            (data.business_pep_relations_count + data.personal_pep_relations_count + data.family_pep_relations_count)
+            .toLocaleString('en'));
     },
 });
 
