@@ -130,9 +130,9 @@ $('.terms_and_conditions').on('click', function () {
 
 $('.privacy_policy').on('click', function () {
     if (localStorage.getItem('lang') === 'uk') {
-        window.open(`${process.env.DO_FRONTEND_HOST}/docs/PrivacyPolicyUk.html`);
+        window.location.assign(`${process.env.DO_FRONTEND_HOST}/docs/PrivacyPolicyUk.html`);
     } else {
-        window.open(`${process.env.DO_FRONTEND_HOST}/docs/PrivacyPolicyEn.html`);
+        window.location.assign(`${process.env.DO_FRONTEND_HOST}/docs/PrivacyPolicyEn.html`);
     }
 });
 

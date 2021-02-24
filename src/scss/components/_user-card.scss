@@ -13,6 +13,11 @@
     &__name {
         font-size: $font-size-xxl;
         color: #00316D;
+
+        @media (max-width: $lg) {
+            font-size: $font-size-base * 2;
+        }
+
         @media (max-width: $sm) {
             font-size: calc(7vw);
         }
