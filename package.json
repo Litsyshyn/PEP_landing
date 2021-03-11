@@ -8,10 +8,6 @@
     "watch": "webpack --config webpack.dev.js --watch",
     "start": "webpack serve  --config=webpack.dev.js"
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/3v-workspace/PEP_landing.git"
