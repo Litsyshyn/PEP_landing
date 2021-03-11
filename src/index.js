@@ -8,7 +8,7 @@ onChangeLang( (LangCode) => {
     $('#username')[0].placeholder = t('placeholderName');
     $('#surname')[0].placeholder = t('placeholderLastName');
     $('#question')[0].placeholder = t('placeholderQuestion');
-    
+
     $('#username_pay')[0].placeholder = t('placeholderName');
     $('#surname_pay')[0].placeholder = t('placeholderLastName');
     $('#question_pay')[0].placeholder = t('placeholderPayNote');
@@ -187,7 +187,7 @@ $.ajax({
                 </span>
             </div>
 
-            <div class="payment-card__priсe h1 payment-card__priсe_required">
+            <div class="payment-card__priсe h1">
                 <div lang="uk">
                     ${subscription.price}
                     <span lang="uk">грн/міс</span>
@@ -298,21 +298,21 @@ $('#pay-form').on('submit', function(event){
     event.preventDefault();
     let payForm = $(this);
     payForm.validate(getPaySchema())
-    
+
     if (!payForm.valid()) {
         return
     }
-    
+
     let payData = {
         first_name: this.username_pay.value,
         last_name: this.surname_pay.value,
         email: this.email_pay.value,
-        phone: this.phone_pay.value, 
+        phone: this.phone_pay.value,
         note: this.question_pay.value,
     }
-    
+
     $('.open-payform').fadeOut();
-    
+
     $.ajax({
         url: `${process.env.DO_BACKEND_HOST}/api/payment/custom-subscription-request/create/`,
         type: "POST",
