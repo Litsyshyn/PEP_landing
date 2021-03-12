@@ -122,17 +122,17 @@ $('#api-docs').on('click', function () {
 
 $('.terms_and_conditions').on('click', function () {
     if (localStorage.getItem('lang') === 'uk') {
-        window.location.assign(`${process.env.DO_FRONTEND_HOST}/docs/TermsAndConditionsUk.html`);
+       location.assign(`${process.env.DO_FRONTEND_HOST}/docs/TermsAndConditionsUk.html`);
     } else {
-        window.location.assign(`${process.env.DO_FRONTEND_HOST}/docs/TermsAndConditionsEn.html`);
+        location.assign(`${process.env.DO_FRONTEND_HOST}/docs/TermsAndConditionsEn.html`);
     }
 });
 
 $('.privacy_policy').on('click', function () {
     if (localStorage.getItem('lang') === 'uk') {
-        window.location.assign(`${process.env.DO_FRONTEND_HOST}/docs/PrivacyPolicyUk.html`);
+        location.assign(`${process.env.DO_FRONTEND_HOST}/docs/PrivacyPolicyUk.html`);
     } else {
-        window.location.assign(`${process.env.DO_FRONTEND_HOST}/docs/PrivacyPolicyEn.html`);
+        location.assign(`${process.env.DO_FRONTEND_HOST}/docs/PrivacyPolicyEn.html`);
     }
 });
 
