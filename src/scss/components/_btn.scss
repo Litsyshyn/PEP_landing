@@ -21,16 +21,31 @@
     @media screen and (max-width: $xl) {
         margin-top: $spacer * 0;
     }
+
+    &:hover {
+        cursor: pointer;
+        background-color: #F06B20;
+    }
+
+    &:active {
+        cursor: pointer;
+        box-shadow: 0 0 4px 4px #FEB084;
+    }
 }
 
-.btn-primary:hover {
-    cursor: pointer;
-    background-color: #F06B20;
-}
+.btn-success {
+    @extend .btn-primary;
 
-.btn-primary:active {
-    cursor: pointer;
-    box-shadow: 0 0 4px 4px #FEB084;
+    background-color: #279324;
+    padding: 13px 44px;
+
+    &:hover {
+        background-color: #3dc439;
+    }
+
+    &:active {
+        box-shadow: 0 0 4px 4px #84fe98;
+    }
 }
 
 .btn-primary_submit:hover {
@@ -42,5 +57,5 @@
 }
 
 .btn--has-shadow {
-    box-shadow: 0px 10px 16px 0px rgba(77,91,237,0.2);
+    box-shadow: 0px 10px 16px 0px rgba(77, 91, 237, 0.2);
 }

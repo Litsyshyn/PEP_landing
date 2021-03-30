@@ -1,0 +1,138 @@
+.subs-table-container {
+  margin-top: 40px;
+  overflow: auto;
+}
+
+#subs-table {
+  border-collapse: collapse;
+  color: #00316D;
+  border-color: #BECBF2;
+
+  td, th {
+    border: 1px solid #BECBF2;
+    padding: 10px 12px;
+    font-size: 20px;
+  }
+
+  th {
+    background-color: #2A4FB6;
+    color: white;
+    border-top-width: 0;
+  }
+
+  td {
+    vertical-align: middle;
+
+    &:first-child {
+      text-align: left;
+      font-weight: 500;
+    }
+  }
+
+  thead th:first-child {
+    padding: 0;
+    position: relative;
+    background: none;
+
+    border-left: 1px solid rgba(0, 0, 0, 0);
+    border-top: 1px solid rgba(0, 0, 0, 0);
+
+    > div {
+      background-color: #2A4FB6;
+      border-style: solid;
+
+      position: absolute;
+      top: -1px;
+      bottom: 0;
+      right: 0;
+      left: -1px;
+      //border-top: 1px solid #BECBF2;
+      //border-left: 1px solid #BECBF2;
+      border-top-left-radius: 6px;
+    }
+  }
+
+  thead th:last-child {
+    padding: 0;
+    position: relative;
+    background: none;
+    min-width: 210px;
+
+    border-right: 1px solid rgba(0, 0, 0, 0);
+    border-top: 1px solid rgba(0, 0, 0, 0);
+
+    > div {
+      padding: 40px 40px 15px 40px;
+      background-color: #2A4FB6;
+      position: absolute;
+      top: -1px;
+      bottom: 0;
+      right: -1px;
+      left: 0;
+      border-style: solid;
+      //border-top: 1px solid #BECBF2;
+      //border-right: 1px solid #BECBF2;
+      border-top-right-radius: 6px;
+    }
+  }
+
+  .sub-name {
+    padding: 40px 40px 15px 40px;
+    position: relative;
+
+    &__name {
+      white-space: nowrap;
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    &__price {
+      font-weight: bold;
+      font-size: 32px;
+      margin-bottom: -10px;
+    }
+
+    &__currency {
+      font-weight: normal;
+      font-size: 18px;
+    }
+
+    &__custom-price {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+  }
+
+  .subscription-data {
+    &_filled {
+      font-weight: 500;
+      font-size: 28px;
+    }
+  }
+
+  .subs-buttons {
+    td {
+      &:first-child {
+        color: #585858;
+        font-style: italic;
+        font-weight: normal;
+        font-size: 18px;
+      }
+      border-width: 0;
+    }
+  }
+
+  //absolute top-0 left-0 bg-red-600 rounded-br-xl py-1 px-2 font-normal text-white
+  .subscription-discount {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #F76615;
+    border-bottom-right-radius: 13px;
+    padding: 7px 12px;
+    font-weight: bold;
+    font-size: 15px;
+  }
+}
