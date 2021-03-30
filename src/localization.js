@@ -89,6 +89,10 @@ export function changeLang (languageCode) {
     }
 }
 
+export function refreshLang() {
+    changeLang(localStorage.getItem('lang'));
+}
+
 $('#change-lang').on('click', function(event) {
     event.preventDefault();
     let langUser = 'uk';
@@ -110,3 +114,7 @@ $(() => {
         changeLang('uk');
     }
 });
+
+export const generateHtml = (uk, en) => {
+    return `<span lang="uk">${uk}</span><span lang="en">${en}</span>`
+}

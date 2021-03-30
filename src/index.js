@@ -1,10 +1,11 @@
 import './scss/main.scss';
 import { allowedLanguages, t, changeLang, onChangeLang } from './localization';
+import SubscriptionsTable from './subscriptions-table'
 import $ from 'jquery';
 import 'jquery-validation';
 import 'jquery-modal';
 
-onChangeLang( (LangCode) => {
+onChangeLang((langCode) => {
     $('#username')[0].placeholder = t('placeholderName');
     $('#surname')[0].placeholder = t('placeholderLastName');
     $('#question')[0].placeholder = t('placeholderQuestion');
@@ -148,77 +149,6 @@ $('.menu-btn').on('click', function (event) {
 });
 
 $.ajax({
-    url: `${process.env.DO_BACKEND_HOST}/api/payment/subscriptions/`,
-    success : function(data){
-        let elements = [];
-        const imgPay = [
-            'img/icon_free.svg',
-            'img/icon_basic.svg',
-            'img/icon_premium.svg',
-        ];
-
-        data.forEach (function(subscription, i) {
-        const requestsLimitEn = subscription.requests_limit.toLocaleString("en");
-        const subscriptionPriceEn = subscription.price.toLocaleString("en");
-
-        let html = `
-            <div class="payment-card">
-
-            <img src="${imgPay[i]}" alt='tarif_logo'></img>
-
-            <div class="payment-card__name h3">
-                <span>${subscription.name}</span>
-            </div>
-
-            <div class="payment-card__title">
-                <span lang="uk">
-                    <br>     
-                        ${subscription.requests_limit}
-                        API-запитів
-                    <br> 
-                        ${ !subscription.is_default ? ('Необмежено переглядів') : subscription.platform_requests_limit + ' Переглядів'}
-                </span>
-                <span lang="en">
-                    <br>
-                        ${requestsLimitEn}
-                        API-requests
-                    <br>
-                        ${ !subscription.is_default ? ('Unlimited views') : subscription.platform_requests_limit + ' Views'}
-                </span>
-            </div>
-
-            <div class="payment-card__priсe h1">
-                <div lang="uk">
-                    ${subscription.price}
-                    <span lang="uk">грн/міс</span>
-                </div>
-                <div lang="en">
-                    ${subscriptionPriceEn}
-                    <span lang="en">UAH/month</span>
-                </div>
-            </div>
-
-            <button type="button" class="btn-primary link-platform js-subscription-select" data-id="${subscription.id}">
-                <span lang="uk">Обрати</span>
-                <span lang="en">Choose</span>
-            </button>
-            </div>
-            `
-            elements.push(html);
-        });
-
-        $('#payment-box').html(elements)
-
-        changeLang(window.localStorage.getItem('lang') || 'uk')
-
-        $('.js-subscription-select').on('click', function () {
-            const subId = $(this).data('id')
-            window.open(`${process.env.DO_FRONTEND_HOST}/system/subscriptions/?lang=${localStorage.getItem('lang')}&subscription=${subId}`);
-        });
-    }
-});
-
-$.ajax({
     url: `${process.env.DO_BACKEND_HOST}/api/stats/count-peps/`,
     success: function(data) {
         $('#peps').html(data.peps_count.toLocaleString('en'));
@@ -290,10 +220,6 @@ const getPaySchema = () => {
     }
 };
 
-$('#open-payform').on('click', function () {
-    $('.open-payform').fadeToggle();
-});
-
 $('#pay-form').on('submit', function(event){
     event.preventDefault();
     let payForm = $(this);
@@ -330,3 +256,5 @@ $('#pay-form').on('submit', function(event){
 $('#payform-close').on('click', function () {
     $('.open-payform').fadeOut();
 });
+
+new SubscriptionsTable('#subs-table').init();
